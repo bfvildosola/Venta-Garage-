@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Oficial de Venta de Garage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 20px 10px 100px 10px; background-color: #fcf8f5; color: #2c221e; }
+        
+        .header-container { text-align: center; max-width: 900px; margin: 0 auto 20px auto; padding: 25px 15px; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(184, 137, 107, 0.08); border: 1px solid #f2e6df; }
+        h1 { color: #8c4327; font-size: 28px; margin: 0 0 10px 0; font-weight: 700; }
+        .subtitle { color: #7a685d; font-size: 14px; margin-bottom: 20px; }
+        
+        .rules-card { background: #fff8f5; border: 1px solid #e6b8a2; padding: 20px; border-radius: 14px; max-width: 900px; margin: 0 auto 25px auto; text-align: left; }
+        .rules-card h3 { margin-top: 0; color: #8c4327; font-size: 18px; margin-bottom: 12px; }
+        .rules-card ul { margin: 0; padding-left: 20px; color: #61463a; font-size: 14px; line-height: 1.6; }
+        
+        .user-form-card { background: #faf0eb; border: 2px solid #e6b8a2; padding: 20px; border-radius: 14px; max-width: 900px; margin: 0 auto; text-align: left; box-sizing: border-box;}
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: #8c4327; margin-bottom: 6px; }
+        .form-group input[type="text"], .form-group input[type="email"] { width: 92%; padding: 10px; border: 1px solid #d4a38d; border-radius: 8px; font-size: 15px; background: #ffffff; outline: none; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: #ffffff; padding: 12px; border: 1px solid #d4a38d; border-radius: 8px; cursor: pointer;}
+        .checkbox-container input { width: 20px; height: 20px; cursor: pointer; }
+        .checkbox-container span { font-size: 15px; font-weight: 600; color: #2c221e; }
+        
+        .cat-title { background: linear-gradient(135deg, #8c4327 0%, #a65333 100%); color: #ffffff; padding: 12px 18px; margin: 30px auto 15px auto; max-width: 900px; border-radius: 12px; font-size: 18px; }
+        .subcat-title { color: #a65333; max-width: 900px; margin: 20px auto 10px auto; border-bottom: 2px solid #ecdcd3; padding-bottom: 6px; font-size: 16px; }
+        
+        .item-card { display: flex; flex-direction: column; max-width: 900px; margin: 0 auto 20px auto; background: #ffffff; border-radius: 16px; padding: 20px; border: 1px solid #f2e6df; gap: 15px; box-shadow: 0 2px 10px rgba(184, 137, 107, 0.05); transition: opacity 0.3s;}
+        .item-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height:1.2; }
+        .specs-box { background-color: #faf0eb; border-left: 4px solid #d47a59; padding: 12px 16px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; color: #4e352b; line-height: 1.5; }
+        .price-badge { display: inline-block; background-color: #8c4327; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+        .gallery img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid #e8dad1; cursor: pointer; transition: 0.2s; }
+        .gallery img:hover { filter: brightness(0.9); }
+        
+        .offer-box { width: 100%; border: 2px dashed #e6b8a2; border-radius: 12px; padding: 15px; background: #fff8f5; box-sizing: border-box; text-align: center; }
+        .offer-input-group input { width: 80%; padding: 10px; border: 1px solid #d4a38d; border-radius: 6px; text-align: center; font-size: 16px; font-weight: 700; margin-bottom:10px; }
+        .btn-add { background: #1e3a8a; color: #ffffff; border: none; padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; width: 90%; transition: 0.2s; }
+        
+        /* BARRA FLOTANTE */
+        .cart-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 2px solid #e2e8f0; padding: 15px 0; text-align: center; z-index: 1000; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); }
+        .cart-text { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
+        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        
+        /* MODAL IMÁGENES */
+        .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: zoom-out; }
+        .modal img { max-width: 95%; max-height: 90%; border-radius: 8px; object-fit: contain; }
+
+        @media(min-width: 768px) {
+            .item-card { flex-direction: row; padding: 25px; }
+            .item-left { flex: 1; padding-right: 20px; }
+            .offer-box { width: 260px; margin-top:0; }
+            .form-grid { grid-template-columns: 1fr 1fr; }
+            .user-form-card .form-group:last-child { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Catálogo de Venta de Garage</h1>
+        <div class="subtitle">Santiago, Chile | Agrega tus ofertas a cada producto y envíalas juntas por WhatsApp.</div>
+    </div>
+
+    <!-- REGLAS DEL JUEGO -->
+    <div class="rules-card">
+        <h3>📌 Reglas y Formato de Compra</h3>
+        <ul>
+            <li><strong>¿Cómo comprar?</strong> Agrega el valor que ofreces por cada producto que te interese y haz clic en "Guardar en Carrito". Al final, envía todo tu carrito junto usando el botón verde de abajo.</li>
+            <li><strong>Cierre de Ofertas:</strong> Se recibirán ofertas hasta una fecha específica (por definirse). ¡Asegura tus productos antes de que se agoten!</li>
+            <li><strong>Muestra de productos:</strong> Sábado 15 de Agosto y Domingo 16 de Agosto (Coordinar horario por interno).</li>
+            <li><strong>Retiro:</strong> Todos los productos deben ser retirados en <strong>Vitacura</strong>, entre el Lunes 17 y Miércoles 19 de Agosto. Todo se entrega probado y en su estado actual.</li>
+            <li><strong>¿No tienes cómo llevarlo?</strong> Marca la casilla de despacho al llenar tus datos y te lo enviamos por un costo fijo de $50.000.</li>
+        </ul>
+    </div>
+
+    <div class="user-form-card">
+        <div style="font-weight: 700; color: #8c4327; margin-bottom: 15px;">👤 Ingresa tus datos antes de ofertar</div>
+        <div class="form-grid">
+            <div class="form-group"><label>Tu Nombre y Apellido *</label><input type="text" id="userName" placeholder="Ej: Juan Pérez"></div>
+            <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="text" id="userPhone" placeholder="+56 9..."></div>
+            <div class="form-group"><label>Correo Electrónico</label><input type="email" id="userEmail" placeholder="juan@gmail.com"></div>
+            
+            <div class="form-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="userDespacho" onchange="actualizarCarrito()">
+                    <span>🚚 Necesito despacho a domicilio (+$50.000 CLP)</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+<h2 class="cat-title">1. Deportes de Nieve (Esquí & Snowboard)</h2>
+<h3 class="subcat-title">1.1. Skis Premium (Alta Gama)</h3>
+
+            <div class="item-card" id="card-ski_stockli">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_stockli">Skis Stöckli Montero AX - 168 cm</div>
+                    <div class="price-badge" id="badge-ski_stockli">Precio Sugerido: $900,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_stockli"><strong>Reseña:</strong> Fabricados a mano en Suiza. El Montero AX es famoso por combinar la agilidad de un esquí de slalom con la estabilidad absoluta del freeride.<br><br><strong>Ficha Técnica:</strong> Longitud: 168 cm | Estructura: Titanal & Núcleo de Madera Ligera | Fijaciones incluidas.</div>
+                    <div class="gallery">
+            <img src="20260802_154147.jpg" alt="Skis Stöckli Montero AX - 168 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154237.jpg" alt="Skis Stöckli Montero AX - 168 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154216.jpg" alt="Skis Stöckli Montero AX - 168 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154201.jpg" alt="Skis Stöckli Montero AX - 168 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154154.jpg" alt="Skis Stöckli Montero AX - 168 cm" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_stockli">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_stockli" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_stockli" onclick="agregarOferta('ski_stockli')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-ski_volkl">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_volkl">Skis Völkl Mantra V.Werks Carbon - 170 cm</div>
+                    <div class="price-badge" id="badge-ski_volkl">Precio Sugerido: $280,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_volkl"><strong>Reseña:</strong> Una auténtica obra de arte de la ingeniería en carbono. Extremadamente ligeros para el ascenso pero súper potentes en el descenso.<br><br><strong>Ficha Técnica:</strong> Longitud: 170 cm | Construcción: Carbono 3D.RIDGE | Incluye fijaciones Marker Griffon.</div>
+                    <div class="gallery">
+            <img src="20260802_154039.jpg" alt="Skis Völkl Mantra V.Werks Carbon - 170 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154058.jpg" alt="Skis Völkl Mantra V.Werks Carbon - 170 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154053.jpg" alt="Skis Völkl Mantra V.Werks Carbon - 170 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154049.jpg" alt="Skis Völkl Mantra V.Werks Carbon - 170 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_154044.jpg" alt="Skis Völkl Mantra V.Werks Carbon - 170 cm" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_volkl">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_volkl" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_volkl" onclick="agregarOferta('ski_volkl')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-ski_kastle">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_kastle">Skis Kästle BMX 105 Freeride - 173 cm</div>
+                    <div class="price-badge" id="badge-ski_kastle">Precio Sugerido: $350,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_kastle"><strong>Reseña:</strong> El rey indiscutido del freeride. La icónica ventana transparente en la espátula (Hollowtech) no es solo estética: elimina peso y reduce drásticamente el rebote del esquí.<br><br><strong>Ficha Técnica:</strong> Longitud: 173 cm | Patín: 105 mm | Fijaciones: Marker Griffon 13.</div>
+                    <div class="gallery">
+            <img src="20260802_153658.jpg" alt="Skis Kästle BMX 105 Freeride - 173 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_153721.jpg" alt="Skis Kästle BMX 105 Freeride - 173 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_153716.jpg" alt="Skis Kästle BMX 105 Freeride - 173 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_153706.jpg" alt="Skis Kästle BMX 105 Freeride - 173 cm" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_kastle">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_kastle" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_kastle" onclick="agregarOferta('ski_kastle')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">1.2. Skis All-Mountain & Pista</h3>
+
+            <div class="item-card" id="card-ski_rossignol">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_rossignol">Skis Rossignol Experience 80 Carbon - 166 cm</div>
+                    <div class="price-badge" id="badge-ski_rossignol">Precio Sugerido: $220,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_rossignol"><strong>Reseña:</strong> El equilibrio perfecto para esquiadores intermedios-avanzados. Reforzado con carbono para darte respuesta inmediata sin exigir el esfuerzo físico de un esquí de competición.<br><br><strong>Ficha Técnica:</strong> Longitud: 166 cm | Patín: 80 mm | Núcleo: Paulownia Wood Core con Carbono.</div>
+                    <div class="gallery">
+            <img src="20260802_153740.jpg" alt="Skis Rossignol Experience 80 Carbon - 166 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_153748.jpg" alt="Skis Rossignol Experience 80 Carbon - 166 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_153822.jpg" alt="Skis Rossignol Experience 80 Carbon - 166 cm" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_rossignol">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_rossignol" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_rossignol" onclick="agregarOferta('ski_rossignol')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-ski_head">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_head">Skis Head Total JOY SLR (Mujer)</div>
+                    <div class="price-badge" id="badge-ski_head">Precio Sugerido: $130,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_head"><strong>Reseña:</strong> Diseñados específicamente para mujeres, utilizando tecnología Graphene. Son súper permisivos, fáciles de girar y evitan la fatiga en las piernas.<br><br><strong>Ficha Técnica:</strong> Construcción: LIBRA Graphene & Karuba Wood Core | Incluye fijaciones ajustables.</div>
+                    <div class="gallery">
+            <img src="20260802_154339.jpg" alt="Skis Head Total JOY SLR (Mujer)" onclick="ampliarImagen(this.src)">
+<img src="20260802_154335.jpg" alt="Skis Head Total JOY SLR (Mujer)" onclick="ampliarImagen(this.src)">
+<img src="20260802_154326.jpg" alt="Skis Head Total JOY SLR (Mujer)" onclick="ampliarImagen(this.src)">
+<img src="20260802_154319.jpg" alt="Skis Head Total JOY SLR (Mujer)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_head">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_head" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_head" onclick="agregarOferta('ski_head')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-ski_armada">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_armada">Skis Freeride Armada ARV 96</div>
+                    <div class="price-badge" id="badge-ski_armada">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_armada"><strong>Reseña:</strong> El esquí más icónico de freestyle/freeride. Su perfil Rocker permite saltar en el park o esquiar de espaldas.<br><br><strong>Ficha Técnica:</strong> Perfil: AR Freeride Rocker Twin Tip | Canto reforzado 2.5 Impact Edge.</div>
+                    <div class="gallery">
+            <img src="20260802_153941.jpg" alt="Skis Freeride Armada ARV 96" onclick="ampliarImagen(this.src)">
+<img src="20260802_153938.jpg" alt="Skis Freeride Armada ARV 96" onclick="ampliarImagen(this.src)">
+<img src="20260802_153904.jpg" alt="Skis Freeride Armada ARV 96" onclick="ampliarImagen(this.src)">
+<img src="20260802_153858.jpg" alt="Skis Freeride Armada ARV 96" onclick="ampliarImagen(this.src)">
+<img src="20260802_153856.jpg" alt="Skis Freeride Armada ARV 96" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_armada">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_armada" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_armada" onclick="agregarOferta('ski_armada')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-ski_dynastar">
+                <div class="item-left">
+                    <div class="item-title" id="title-ski_dynastar">Skis Dynastar Speed Team Course WC - 160 cm</div>
+                    <div class="price-badge" id="badge-ski_dynastar">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-ski_dynastar"><strong>Reseña:</strong> Un esquí de linaje de Copa del Mundo adaptado para pista. Está pensado para quienes aman bajar rápido y hacer giros cortos y precisos en nieve dura o hielo.<br><br><strong>Ficha Técnica:</strong> Longitud: 160 cm | Estructura: Sandwich Titanal de Competición.</div>
+                    <div class="gallery">
+            <img src="20260802_161716.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161724.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161726.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161730 2.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161730.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161734 2.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+<img src="20260802_161734.jpg" alt="Skis Dynastar Speed Team Course WC - 160 cm" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-ski_dynastar">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-ski_dynastar" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-ski_dynastar" onclick="agregarOferta('ski_dynastar')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">1.3. Botas, Cascos y Accesorios</h3>
+
+            <div class="item-card" id="card-botas_dalbello">
+                <div class="item-left">
+                    <div class="item-title" id="title-botas_dalbello">Botas de Ski Dalbello Boss 110</div>
+                    <div class="price-badge" id="badge-botas_dalbello">Precio Sugerido: $120,000 CLP</div>
+                    <div class="specs-box" id="specs-botas_dalbello"><strong>Reseña:</strong> Su famoso diseño Cabrio de 3 piezas permite una flexión hacia adelante muy progresiva y suave, protegiendo tus canillas.<br><br><strong>Ficha Técnica:</strong> Flex: 110 (Avanzado) | Horma ancha: 103 mm | Hebillas microajustables.</div>
+                    <div class="gallery">
+            <img src="20260802_171614.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+<img src="20260802_171622.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+<img src="20260802_171630.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+<img src="20260802_171648.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+<img src="20260802_171652.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+<img src="20260802_172853.jpg" alt="Botas de Ski Dalbello Boss 110" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-botas_dalbello">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-botas_dalbello" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-botas_dalbello" onclick="agregarOferta('botas_dalbello')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-botas_nordica">
+                <div class="item-left">
+                    <div class="item-title" id="title-botas_nordica">Botas de Ski Nordica Cruise 75</div>
+                    <div class="price-badge" id="badge-botas_nordica">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-botas_nordica"><strong>Reseña:</strong> Priorizan el confort absoluto y el calor. Ideales para esquiadoras principiantes o intermedias.<br><br><strong>Ficha Técnica:</strong> Flex: 75 | Tamaño: 295 mm (~25.0 Mondo) | Suela de alta tracción.</div>
+                    <div class="gallery">
+            <img src="20260802_171714.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+<img src="20260802_171720.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+<img src="20260802_171727.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+<img src="20260802_171731.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+<img src="20260802_171739.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+<img src="20260802_172815.jpg" alt="Botas de Ski Nordica Cruise 75" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-botas_nordica">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-botas_nordica" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-botas_nordica" onclick="agregarOferta('botas_nordica')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-botas_tecnica_azul">
+                <div class="item-left">
+                    <div class="item-title" id="title-botas_tecnica_azul">Botas Tecnica Mach1 MV 110 (Azul/Naranja)</div>
+                    <div class="price-badge" id="badge-botas_tecnica_azul">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-botas_tecnica_azul"><strong>Reseña:</strong> Reconocidas en el mercado por su sistema C.A.S., que permite a los bootfitters adaptar la carcasa exactamente a la forma de tu pie.<br><br><strong>Ficha Técnica:</strong> Flex: 110 | Tamaño: 306 mm (26.0 - 26.5 Mondo).</div>
+                    <div class="gallery">
+            <img src="20260802_171545.jpg" alt="Botas Tecnica Mach1 MV 110 (Azul/Naranja)" onclick="ampliarImagen(this.src)">
+<img src="20260802_171552.jpg" alt="Botas Tecnica Mach1 MV 110 (Azul/Naranja)" onclick="ampliarImagen(this.src)">
+<img src="20260802_171601.jpg" alt="Botas Tecnica Mach1 MV 110 (Azul/Naranja)" onclick="ampliarImagen(this.src)">
+<img src="20260802_172835.jpg" alt="Botas Tecnica Mach1 MV 110 (Azul/Naranja)" onclick="ampliarImagen(this.src)">
+<img src="20260802_172837.jpg" alt="Botas Tecnica Mach1 MV 110 (Azul/Naranja)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-botas_tecnica_azul">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-botas_tecnica_azul" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-botas_tecnica_azul" onclick="agregarOferta('botas_tecnica_azul')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-botas_tecnica_amarilla">
+                <div class="item-left">
+                    <div class="item-title" id="title-botas_tecnica_amarilla">Botas Tecnica Ten.2 80 (Amarillo/Negro)</div>
+                    <div class="price-badge" id="badge-botas_tecnica_amarilla">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-botas_tecnica_amarilla"><strong>Reseña:</strong> Bota todoterreno muy cómoda gracias a su sistema Quick Instep, que suaviza el plástico en el empeine.<br><br><strong>Ficha Técnica:</strong> Flex: 80 | Tamaño: 26.5 Mondo | Horma: 102 mm.</div>
+                    <div class="gallery">
+            <img src="20260802_171505.jpg" alt="Botas Tecnica Ten.2 80 (Amarillo/Negro)" onclick="ampliarImagen(this.src)">
+<img src="20260802_171514.jpg" alt="Botas Tecnica Ten.2 80 (Amarillo/Negro)" onclick="ampliarImagen(this.src)">
+<img src="20260802_171531.jpg" alt="Botas Tecnica Ten.2 80 (Amarillo/Negro)" onclick="ampliarImagen(this.src)">
+<img src="20260802_172826.jpg" alt="Botas Tecnica Ten.2 80 (Amarillo/Negro)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-botas_tecnica_amarilla">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-botas_tecnica_amarilla" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-botas_tecnica_amarilla" onclick="agregarOferta('botas_tecnica_amarilla')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-casco_diezz">
+                <div class="item-left">
+                    <div class="item-title" id="title-casco_diezz">Casco Diezz Activlux Visor Photochromic</div>
+                    <div class="price-badge" id="badge-casco_diezz">Precio Sugerido: $290,000 CLP</div>
+                    <div class="specs-box" id="specs-casco_diezz"><strong>Reseña:</strong> Olvídate de cambiar antiparras. Este casco premium francés trae una visera integrada fotocromática que se oscurece automáticamente si hay sol.<br><br><strong>Ficha Técnica:</strong> Construcción In-Mold ultraligera | Visera S1-S3 adaptable.</div>
+                    <div class="gallery">
+            <img src="20260802_171805.jpg" alt="Casco Diezz Activlux Visor Photochromic" onclick="ampliarImagen(this.src)">
+<img src="20260802_171808.jpg" alt="Casco Diezz Activlux Visor Photochromic" onclick="ampliarImagen(this.src)">
+<img src="20260802_171810.jpg" alt="Casco Diezz Activlux Visor Photochromic" onclick="ampliarImagen(this.src)">
+<img src="20260802_171819.jpg" alt="Casco Diezz Activlux Visor Photochromic" onclick="ampliarImagen(this.src)">
+<img src="20260802_171827.jpg" alt="Casco Diezz Activlux Visor Photochromic" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-casco_diezz">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-casco_diezz" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-casco_diezz" onclick="agregarOferta('casco_diezz')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-antiparras_alpina">
+                <div class="item-left">
+                    <div class="item-title" id="title-antiparras_alpina">Antiparras Alpina Double Jack Mag Q-LITE</div>
+                    <div class="price-badge" id="badge-antiparras_alpina">Precio Sugerido: $52,500 CLP</div>
+                    <div class="specs-box" id="specs-antiparras_alpina"><strong>Reseña:</strong> Cuentan con un lente imantado magnético. Puedes quitar el lente oscuro y poner el claro en un segundo, sin sacarte los guantes.<br><br><strong>Ficha Técnica:</strong> Lente Magnético intercambiable | Filtro Q-LITE de alto contraste.</div>
+                    <div class="gallery">
+            <img src="20260802_172907.jpg" alt="Antiparras Alpina Double Jack Mag Q-LITE" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-antiparras_alpina">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-antiparras_alpina" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-antiparras_alpina" onclick="agregarOferta('antiparras_alpina')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-protector_slytech">
+                <div class="item-left">
+                    <div class="item-title" id="title-protector_slytech">Protector Columna Slytech Backpro</div>
+                    <div class="price-badge" id="badge-protector_slytech">Precio Sugerido: $42,500 CLP</div>
+                    <div class="specs-box" id="specs-protector_slytech"><strong>Reseña:</strong> Seguridad nivel pro. Su espuma inteligente es blanda al moverse y respirar, pero se endurece como una roca al recibir un impacto.<br><br><strong>Ficha Técnica:</strong> Talla: L | Material: Espuma inteligente 2ND SKIN HD en formato chaleco.</div>
+                    <div class="gallery">
+            <img src="20260802_172149.jpg" alt="Protector Columna Slytech Backpro" onclick="ampliarImagen(this.src)">
+<img src="20260802_172155.jpg" alt="Protector Columna Slytech Backpro" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-protector_slytech">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-protector_slytech" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-protector_slytech" onclick="agregarOferta('protector_slytech')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-bastones_gabel">
+                <div class="item-left">
+                    <div class="item-title" id="title-bastones_gabel">Bastones de Ski Gabel Speed (Par)</div>
+                    <div class="price-badge" id="badge-bastones_gabel">Precio Sugerido: $13,990 CLP</div>
+                    <div class="specs-box" id="specs-bastones_gabel"><strong>Reseña:</strong> Bastones italianos de alta velocidad, construidos en una aleación resistente que evita que se doblen o partan con facilidad.<br><br><strong>Ficha Técnica:</strong> Tubo: Aleación de Aluminio F56 | Puntera de acero reforzado.</div>
+                    <div class="gallery">
+            <img src="20260802_161700.jpg" alt="Bastones de Ski Gabel Speed (Par)" onclick="ampliarImagen(this.src)">
+<img src="20260802_161704.jpg" alt="Bastones de Ski Gabel Speed (Par)" onclick="ampliarImagen(this.src)">
+<img src="20260802_161706.jpg" alt="Bastones de Ski Gabel Speed (Par)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-bastones_gabel">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-bastones_gabel" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-bastones_gabel" onclick="agregarOferta('bastones_gabel')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-bastones_salomon">
+                <div class="item-left">
+                    <div class="item-title" id="title-bastones_salomon">Bastones de Ski Salomon Arctic S3</div>
+                    <div class="price-badge" id="badge-bastones_salomon">Precio Sugerido: $18,500 CLP</div>
+                    <div class="specs-box" id="specs-bastones_salomon"><strong>Reseña:</strong> Clásicos, ligeros y altamente confiables. El strap de seguridad S3 se suelta automáticamente si el bastón se engancha en un árbol.<br><br><strong>Ficha Técnica:</strong> Tubo: Aluminio 6061 | Empuñadura bi-material.</div>
+                    <div class="gallery">
+            <img src="20260802_154430.jpg" alt="Bastones de Ski Salomon Arctic S3" onclick="ampliarImagen(this.src)">
+<img src="20260802_154417.jpg" alt="Bastones de Ski Salomon Arctic S3" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-bastones_salomon">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-bastones_salomon" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-bastones_salomon" onclick="agregarOferta('bastones_salomon')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-bastones_kerma">
+                <div class="item-left">
+                    <div class="item-title" id="title-bastones_kerma">Bastones de Ski Kerma Vector Carbon</div>
+                    <div class="price-badge" id="badge-bastones_kerma">Precio Sugerido: $15,000 CLP</div>
+                    <div class="specs-box" id="specs-bastones_kerma"><strong>Reseña:</strong> Muy ligeros al balanceo gracias a su mezcla de carbono y aluminio. Reducen la fatiga de los brazos en jornadas de esquí largas.<br><br><strong>Ficha Técnica:</strong> Aleación ligera de carbono y fibra | Puntera de acero al tungsteno.</div>
+                    <div class="gallery">
+            <img src="20260802_154420.jpg" alt="Bastones de Ski Kerma Vector Carbon" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-bastones_kerma">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-bastones_kerma" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-bastones_kerma" onclick="agregarOferta('bastones_kerma')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h2 class="cat-title">2. Vehículos, Ciclismo & Outdoor</h2>
+<h3 class="subcat-title">2.1. Cadenas de Nieve para Vehículos</h3>
+
+            <div class="item-card" id="card-cadenas_nieve_power">
+                <div class="item-left">
+                    <div class="item-title" id="title-cadenas_nieve_power">Cadenas de Nieve Power para Barro y Nieve</div>
+                    <div class="price-badge" id="badge-cadenas_nieve_power">Precio Sugerido: $45,000 CLP</div>
+                    <div class="specs-box" id="specs-cadenas_nieve_power"><strong>Reseña:</strong> Indispensables para subir a la montaña o enfrentar terrenos difíciles. Cadenas de tipo 'Bar Reinforced' (barras de refuerzo) diseñadas para máxima tracción en hielo y barro profundo.<br><br><strong>Ficha Técnica:</strong> Compatibilidad principal (Stock No. 1884): 265/60/R15, 265/70/R15, 245/75/R16, 255/70/R16, 245/65/R17, 255/65/R17, 255/60/R18 y similares.</div>
+                    <div class="gallery">
+            <img src="EE8080A1-AF38-4CDE-AC0A-FA0A9449102B_1_105_c.jpeg" alt="Cadenas de Nieve Power para Barro y Nieve" onclick="ampliarImagen(this.src)">
+<img src="E519B17F-DC74-41F4-9A67-01D271B7A4C9_1_105_c.jpeg" alt="Cadenas de Nieve Power para Barro y Nieve" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cadenas_nieve_power">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cadenas_nieve_power" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cadenas_nieve_power" onclick="agregarOferta('cadenas_nieve_power')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-cadenas_nieve_tacoma">
+                <div class="item-left">
+                    <div class="item-title" id="title-cadenas_nieve_tacoma">Cadenas de Nieve 265/75/R16 (Tacoma)</div>
+                    <div class="price-badge" id="badge-cadenas_nieve_tacoma">Precio Sugerido: $45,000 CLP</div>
+                    <div class="specs-box" id="specs-cadenas_nieve_tacoma"><strong>Reseña:</strong> Set de cadenas de nieve/barro de alto agarre, almacenadas en estuche rígido azul. Perfectas para camionetas tipo Toyota Tacoma u otros vehículos 4x4 con la medida específica.<br><br><strong>Ficha Técnica:</strong> Medida específica soportada: 265/75/R16. Construcción en acero duradero.</div>
+                    <div class="gallery">
+            <img src="192B5AAF-A963-48E7-9322-903E081BA796_1_105_c.jpg" alt="Cadenas de Nieve 265/75/R16 (Tacoma)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cadenas_nieve_tacoma">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cadenas_nieve_tacoma" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cadenas_nieve_tacoma" onclick="agregarOferta('cadenas_nieve_tacoma')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">2.2. Bicicletas y Accesorios</h3>
+
+            <div class="item-card" id="card-bike_specialized_1">
+                <div class="item-left">
+                    <div class="item-title" id="title-bike_specialized_1">E-Bike Specialized Turbo Creo SL Comp Carbon + Kit</div>
+                    <div class="price-badge" id="badge-bike_specialized_1">Precio Sugerido: $3,100,000 CLP</div>
+                    <div class="specs-box" id="specs-bike_specialized_1"><strong>Reseña:</strong> Una de las mejores e-bikes de gravel/ruta del mundo. Su motor SL 1.1 es tan silencioso y la bici tan ligera, que te olvidarás de que es eléctrica. Ofrece una autonomía tremenda y suaviza los baches con su suspensión en el manubrio Future Shock 2.0. <br><br><strong>Ficha Técnica:</strong> Carbono FACT 11r | Motor 240W | Batería 320Wh | Transmisión Shimano GRX.<br><strong>⚡ INCLUYE KIT:</strong> Casco Specialized Blanco, cargador original y guantes.</div>
+                    <div class="gallery">
+            <img src="20260802_154813.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_154822.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_154837.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_154853.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_154856.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_154900.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+<img src="A8A16984-BCFE-47BB-9493-D4B0C23D9894_1_105_c.jpg" alt="E-Bike Specialized Turbo Creo SL Comp Carbon + Kit" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-bike_specialized_1">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-bike_specialized_1" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-bike_specialized_1" onclick="agregarOferta('bike_specialized_1')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-bike_2">
+                <div class="item-left">
+                    <div class="item-title" id="title-bike_2">Bicicleta BMC Speedfox Carbon Double Suspension + Kit</div>
+                    <div class="price-badge" id="badge-bike_2">Precio Sugerido: $3,100,000 CLP</div>
+                    <div class="specs-box" id="specs-bike_2"><strong>Reseña:</strong> Una máquina suiza para trail. Escala montañas con la eficiencia de una bici de Cross Country, pero desciende con la agresividad de una Enduro. Su sistema de doble suspensión APS absorbe todo sin hacerte perder energía al pedalear.<br><br><strong>Ficha Técnica:</strong> Cuadro Carbono Doble Suspensión | Horquilla Fox 34 | Transmisión SRAM Eagle 12V.<br><strong>⚡ INCLUYE KIT:</strong> Casco Specialized Negro, cargador original y guantes cortos.</div>
+                    <div class="gallery">
+            <img src="20260802_155531.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_155537.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_155541.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_155548.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_155552.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="20260802_155557.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+<img src="83FED23D-936D-428F-AD26-E1B8A3381390_1_105_c.jpg" alt="Bicicleta BMC Speedfox Carbon Double Suspension + Kit" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-bike_2">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-bike_2" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-bike_2" onclick="agregarOferta('bike_2')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-pack_fox_enduro">
+                <div class="item-left">
+                    <div class="item-title" id="title-pack_fox_enduro">Pack Enduro/Descenso FOX (Casco Integral + Rodilleras)</div>
+                    <div class="price-badge" id="badge-pack_fox_enduro">Precio Sugerido: $95,000 CLP</div>
+                    <div class="specs-box" id="specs-pack_fox_enduro"><strong>Reseña:</strong> La protección definitiva para los amantes de los descensos y el enduro. El casco integral Fox ofrece ventilación superior y protección completa de mandíbula, mientras que las rodilleras aseguran movilidad sin sacrificar seguridad ante impactos.<br><br><strong>Ficha Técnica:</strong> Incluye: 1 Casco integral FOX (gris mate) + 1 Par de Rodilleras FOX Pro.</div>
+                    <div class="gallery">
+            <img src="0B62D3B3-FEE6-4061-97F8-216BD9EF117A_1_105_c.jpg" alt="Pack Enduro/Descenso FOX (Casco Integral + Rodilleras)" onclick="ampliarImagen(this.src)">
+<img src="5B092798-A589-465D-AA93-9093EA3E80B5_1_105_c.jpeg" alt="Pack Enduro/Descenso FOX (Casco Integral + Rodilleras)" onclick="ampliarImagen(this.src)">
+<img src="C949E4E0-AD65-4FF9-8E0C-0D060B2641A7_1_105_c.jpeg" alt="Pack Enduro/Descenso FOX (Casco Integral + Rodilleras)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-pack_fox_enduro">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-pack_fox_enduro" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-pack_fox_enduro" onclick="agregarOferta('pack_fox_enduro')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">2.3. Deportes de Agua</h3>
+
+            <div class="item-card" id="card-kitesurf_best">
+                <div class="item-left">
+                    <div class="item-title" id="title-kitesurf_best">Set Kitesurf Best Waroo 9m² Completo</div>
+                    <div class="price-badge" id="badge-kitesurf_best">Precio Sugerido: $120,000 CLP</div>
+                    <div class="specs-box" id="specs-kitesurf_best"><strong>Reseña:</strong> El Best Waroo revolucionó el kitesurf con su diseño SLE (Supported Leading Edge), ofreciendo un rango de viento gigante y un relanzamiento desde el agua facilísimo. Perfecto tanto para principiantes como para expertos en saltos altos.<br><br><strong>Ficha Técnica:</strong> Superficie: 9 m² | Incluye barra de control, líneas, arnés, bomba y mochila.</div>
+                    <div class="gallery">
+            <img src="20260802_155639.jpg" alt="Set Kitesurf Best Waroo 9m² Completo" onclick="ampliarImagen(this.src)">
+<img src="20260802_155654.jpg" alt="Set Kitesurf Best Waroo 9m² Completo" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-kitesurf_best">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-kitesurf_best" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-kitesurf_best" onclick="agregarOferta('kitesurf_best')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-tabla_wayo">
+                <div class="item-left">
+                    <div class="item-title" id="title-tabla_wayo">Tabla de Surf Wayo Whilar + Accesorios</div>
+                    <div class="price-badge" id="badge-tabla_wayo">Precio Sugerido: $160,000 CLP</div>
+                    <div class="specs-box" id="specs-tabla_wayo"><strong>Reseña:</strong> Tabla shappeada por la reconocida marca peruana Wayo Whilar. Su diseño All-Round (todoterreno) te permite surfear desde olas pequeñas y fofas hasta paredes más paradas con gran estabilidad y velocidad de remada.<br><br><strong>Ficha Técnica:</strong> Setup de 3 Quillas desmontables | Incluye Leash de seguridad y funda acolchada.</div>
+                    <div class="gallery">
+            <img src="20260802_162201.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162208.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162212.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162216.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162218.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162223.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162226.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+<img src="20260802_162240.jpg" alt="Tabla de Surf Wayo Whilar + Accesorios" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-tabla_wayo">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-tabla_wayo" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-tabla_wayo" onclick="agregarOferta('tabla_wayo')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h2 class="cat-title">3. Tecnología, Audio & Fotografía</h2>
+<h3 class="subcat-title">3.1. Equipos de Audio</h3>
+
+            <div class="item-card" id="card-home_theater_yamaha">
+                <div class="item-left">
+                    <div class="item-title" id="title-home_theater_yamaha">Sistema Home Theater Yamaha YST + Receiver</div>
+                    <div class="price-badge" id="badge-home_theater_yamaha">Precio Sugerido: $350,000 CLP</div>
+                    <div class="specs-box" id="specs-home_theater_yamaha"><strong>Reseña:</strong> Un cine en casa completo y potente. Este sistema incluye el robusto Subwoofer Activo Yamaha YST-SW315 con tecnología Advanced YST para bajos profundos, un potente Receiver AV, y los canales (parlante central y satélites) necesarios para lograr un sonido envolvente inmersivo de altísima calidad.<br><br><strong>Ficha Técnica:</strong> Incluye: 1 Receiver AV Yamaha, 1 Subwoofer Activo YST-SW315 (250W), 1 Parlante Central y parlantes satélite. Controles de corte de frecuencia y bajos en el subwoofer.</div>
+                    <div class="gallery">
+            <img src="3FEFD175-023B-412F-A1D8-DA224A2890C0_1_105_c.jpeg" alt="Sistema Home Theater Yamaha YST + Receiver" onclick="ampliarImagen(this.src)">
+<img src="22B37D59-240B-4615-B2B1-13950706212A_1_105_c.jpeg" alt="Sistema Home Theater Yamaha YST + Receiver" onclick="ampliarImagen(this.src)">
+<img src="8AC0308D-3746-4558-9303-33E66B21FDFF_1_105_c.jpg" alt="Sistema Home Theater Yamaha YST + Receiver" onclick="ampliarImagen(this.src)">
+<img src="FD5C9AD4-C482-4337-A498-526311811076_1_105_c.jpg" alt="Sistema Home Theater Yamaha YST + Receiver" onclick="ampliarImagen(this.src)">
+<img src="43A603B3-7987-4800-AAEC-9799295DBEB5_1_105_c.jpeg" alt="Sistema Home Theater Yamaha YST + Receiver" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-home_theater_yamaha">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-home_theater_yamaha" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-home_theater_yamaha" onclick="agregarOferta('home_theater_yamaha')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-parlantes_mirage">
+                <div class="item-left">
+                    <div class="item-title" id="title-parlantes_mirage">Parlantes Columna Hi-Fi Mirage FRx-7 (Par)</div>
+                    <div class="price-badge" id="badge-parlantes_mirage">Precio Sugerido: $230,000 CLP</div>
+                    <div class="specs-box" id="specs-parlantes_mirage"><strong>Reseña:</strong> Altavoces audiófilos de culto. Su tecnología omnipolar dispersa el sonido en 360 grados, creando una escena de audio envolvente que te hace sentir en medio de un concierto en vivo, sin importar dónde te sientes en la sala.<br><br><strong>Ficha Técnica:</strong> Diseño Columna Bipolar/Omnipolar | Potencia: 150W RMS | Respuesta: 33Hz - 22kHz.</div>
+                    <div class="gallery">
+            <img src="20260802_164111.jpg" alt="Parlantes Columna Hi-Fi Mirage FRx-7 (Par)" onclick="ampliarImagen(this.src)">
+<img src="20260802_164114.jpg" alt="Parlantes Columna Hi-Fi Mirage FRx-7 (Par)" onclick="ampliarImagen(this.src)">
+<img src="20260802_164136.jpg" alt="Parlantes Columna Hi-Fi Mirage FRx-7 (Par)" onclick="ampliarImagen(this.src)">
+<img src="20260802_164143.jpg" alt="Parlantes Columna Hi-Fi Mirage FRx-7 (Par)" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-parlantes_mirage">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-parlantes_mirage" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-parlantes_mirage" onclick="agregarOferta('parlantes_mirage')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">3.2. Electrónica General</h3>
+
+            <div class="item-card" id="card-tv_samsung_frame">
+                <div class="item-left">
+                    <div class="item-title" id="title-tv_samsung_frame">Smart TV Samsung The Frame 75" QLED 4K</div>
+                    <div class="price-badge" id="badge-tv_samsung_frame">Precio Sugerido: $1,100,000 CLP</div>
+                    <div class="specs-box" id="specs-tv_samsung_frame"><strong>Reseña:</strong> Espectacular obra de diseño. Cuando la apagas, se convierte en un cuadro de arte real (no parece una pantalla). Su panel Matte Display elimina el 100% de los reflejos de las ventanas, y su One Connect Box saca todo el cablerío de la vista.<br><br><strong>Ficha Técnica:</strong> 75 pulgadas QLED 4K | Incluye One Connect Box y soporte de pared No Gap.</div>
+                    <div class="gallery">
+            <img src="20260802_164030.jpg" alt="Smart TV Samsung The Frame 75" QLED 4K" onclick="ampliarImagen(this.src)">
+<img src="20260802_164036.jpg" alt="Smart TV Samsung The Frame 75" QLED 4K" onclick="ampliarImagen(this.src)">
+<img src="20260802_164045.jpg" alt="Smart TV Samsung The Frame 75" QLED 4K" onclick="ampliarImagen(this.src)">
+<img src="20260802_164048.jpg" alt="Smart TV Samsung The Frame 75" QLED 4K" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-tv_samsung_frame">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-tv_samsung_frame" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-tv_samsung_frame" onclick="agregarOferta('tv_samsung_frame')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-tv_samsung_curvo">
+                <div class="item-left">
+                    <div class="item-title" id="title-tv_samsung_curvo">Smart TV Samsung Pantalla Curva</div>
+                    <div class="price-badge" id="badge-tv_samsung_curvo">Precio Sugerido: $250,000 CLP</div>
+                    <div class="specs-box" id="specs-tv_samsung_curvo"><strong>Reseña:</strong> Un televisor diseñado para sumergirte en la acción. Su panel curvo mejora los ángulos de visión y reduce la fatiga ocular, creando un contraste más uniforme. Ideal para disfrutar de noches de películas o videojuegos en la sala de estar con una sensación de profundidad envolvente.<br><br><strong>Ficha Técnica:</strong> Pantalla LED Curva Samsung | Múltiples puertos HDMI y USB integrados en el panel trasero.</div>
+                    <div class="gallery">
+            <img src="D9239A42-6F81-454B-A4A5-8658E47FA373_1_105_c.jpeg" alt="Smart TV Samsung Pantalla Curva" onclick="ampliarImagen(this.src)">
+<img src="33113E0D-A591-4E46-AC76-BF5DD65605B7_1_105_c.jpeg" alt="Smart TV Samsung Pantalla Curva" onclick="ampliarImagen(this.src)">
+<img src="EFE85796-7F90-4ABC-B3D6-002A363ADC70_1_105_c.jpeg" alt="Smart TV Samsung Pantalla Curva" onclick="ampliarImagen(this.src)">
+<img src="EA722B7E-4B00-4626-B98E-4F5C0D418CCC_1_105_c.jpeg" alt="Smart TV Samsung Pantalla Curva" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-tv_samsung_curvo">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-tv_samsung_curvo" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-tv_samsung_curvo" onclick="agregarOferta('tv_samsung_curvo')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-monitor_samsung">
+                <div class="item-left">
+                    <div class="item-title" id="title-monitor_samsung">Monitor Curvo Samsung ViewFinity S65UA 34"</div>
+                    <div class="price-badge" id="badge-monitor_samsung">Precio Sugerido: $250,000 CLP</div>
+                    <div class="specs-box" id="specs-monitor_samsung"><strong>Reseña:</strong> Incrementa tu productividad brutalmente. Su formato Ultra-Wide curvo equivale a tener dos monitores pegados sin bordes molestos. Cuenta con USB-C que transmite imagen y carga tu notebook al mismo tiempo con un solo cable.<br><br><strong>Ficha Técnica:</strong> Resolución Ultra-WQHD (3440 x 1440) 21:9 | Curvatura inmersiva 1000R | 100Hz.</div>
+                    <div class="gallery">
+            <img src="20260802_165339.jpg" alt="Monitor Curvo Samsung ViewFinity S65UA 34"" onclick="ampliarImagen(this.src)">
+<img src="20260802_165343.jpg" alt="Monitor Curvo Samsung ViewFinity S65UA 34"" onclick="ampliarImagen(this.src)">
+<img src="20260802_170554.jpg" alt="Monitor Curvo Samsung ViewFinity S65UA 34"" onclick="ampliarImagen(this.src)">
+<img src="20260802_170600.jpg" alt="Monitor Curvo Samsung ViewFinity S65UA 34"" onclick="ampliarImagen(this.src)">
+<img src="20260802_170607.jpg" alt="Monitor Curvo Samsung ViewFinity S65UA 34"" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-monitor_samsung">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-monitor_samsung" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-monitor_samsung" onclick="agregarOferta('monitor_samsung')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-apple_imac">
+                <div class="item-left">
+                    <div class="item-title" id="title-apple_imac">Apple iMac Slim All-in-One</div>
+                    <div class="price-badge" id="badge-apple_imac">Precio Sugerido: $250,000 CLP</div>
+                    <div class="specs-box" id="specs-apple_imac"><strong>Reseña:</strong> El clásico de Apple en su icónico diseño de aluminio extra delgado. Ideal para edición de documentos, ofimática y diseño ligero. Su pantalla ofrece colores vibrantes que no cansan la vista y mantiene tu escritorio libre de cables.<br><br><strong>Ficha Técnica:</strong> Pantalla Retina | Almacenamiento SSD rápido | Incluye Apple Magic Keyboard (Teclado) y Magic Mouse originales.</div>
+                    <div class="gallery">
+            <img src="20260802_165057.jpg" alt="Apple iMac Slim All-in-One" onclick="ampliarImagen(this.src)">
+<img src="20260802_165102.jpg" alt="Apple iMac Slim All-in-One" onclick="ampliarImagen(this.src)">
+<img src="20260802_165114.jpg" alt="Apple iMac Slim All-in-One" onclick="ampliarImagen(this.src)">
+<img src="843097BD-99C4-4391-AC90-1D18C755CA6D_1_105_c.jpeg" alt="Apple iMac Slim All-in-One" onclick="ampliarImagen(this.src)">
+<img src="BCBA540E-B8D1-45DE-9548-FBD2DD5EA252_1_105_c.jpeg" alt="Apple iMac Slim All-in-One" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-apple_imac">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-apple_imac" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-apple_imac" onclick="agregarOferta('apple_imac')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-apple_tv">
+                <div class="item-left">
+                    <div class="item-title" id="title-apple_tv">Apple TV 4K HDR 64GB</div>
+                    <div class="price-badge" id="badge-apple_tv">Precio Sugerido: $100,000 CLP</div>
+                    <div class="specs-box" id="specs-apple_tv"><strong>Reseña:</strong> Transforma cualquier tele en el sistema más rápido y fluido del mercado. A diferencia de las interfaces lentas de las Smart TVs convencionales, este Apple TV abre Netflix, Disney+ y YouTube al instante en glorioso 4K.<br><br><strong>Ficha Técnica:</strong> Resolución 4K HDR10 y Dolby Vision | Chip A12 Bionic | Siri Remote.</div>
+                    <div class="gallery">
+            <img src="20260802_165408.jpg" alt="Apple TV 4K HDR 64GB" onclick="ampliarImagen(this.src)">
+<img src="20260802_165414.jpg" alt="Apple TV 4K HDR 64GB" onclick="ampliarImagen(this.src)">
+<img src="20260802_165419.jpg" alt="Apple TV 4K HDR 64GB" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-apple_tv">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-apple_tv" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-apple_tv" onclick="agregarOferta('apple_tv')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-lente_tamron_70_200">
+                <div class="item-left">
+                    <div class="item-title" id="title-lente_tamron_70_200">Lente Tamron SP 70-200mm f/2.8 Di VC USD</div>
+                    <div class="price-badge" id="badge-lente_tamron_70_200">Precio Sugerido: $330,000 CLP</div>
+                    <div class="specs-box" id="specs-lente_tamron_70_200"><strong>Reseña:</strong> Un lente teleobjetivo profesional imprescindible para retratos, deportes y eventos. Su apertura f/2.8 constante produce un desenfoque de fondo (bokeh) cremoso, y su estabilizador VC congela la imagen en condiciones de poca luz.<br><br><strong>Ficha Técnica:</strong> Apertura f/2.8 constante | Estabilizador Óptico VC | Motor de enfoque USD.</div>
+                    <div class="gallery">
+            <img src="20260802_170020.jpg" alt="Lente Tamron SP 70-200mm f/2.8 Di VC USD" onclick="ampliarImagen(this.src)">
+<img src="20260802_170027.jpg" alt="Lente Tamron SP 70-200mm f/2.8 Di VC USD" onclick="ampliarImagen(this.src)">
+<img src="20260802_170034.jpg" alt="Lente Tamron SP 70-200mm f/2.8 Di VC USD" onclick="ampliarImagen(this.src)">
+<img src="20260802_170044.jpg" alt="Lente Tamron SP 70-200mm f/2.8 Di VC USD" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-lente_tamron_70_200">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-lente_tamron_70_200" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-lente_tamron_70_200" onclick="agregarOferta('lente_tamron_70_200')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-lente_sigma_17_50">
+                <div class="item-left">
+                    <div class="item-title" id="title-lente_sigma_17_50">Lente Sigma 17-50mm f/2.8 EX DC OS HSM</div>
+                    <div class="price-badge" id="badge-lente_sigma_17_50">Precio Sugerido: $170,000 CLP</div>
+                    <div class="specs-box" id="specs-lente_sigma_17_50"><strong>Reseña:</strong> El reemplazo perfecto y luminoso para el lente de kit de tu cámara. Ideal para viajes, paisajes y retratos. Es extremadamente nítido de esquina a esquina, incluso con la apertura máxima f/2.8.<br><br><strong>Ficha Técnica:</strong> Rango focal estándar versátil | Estabilizador OS | Motor ultrasónico HSM.</div>
+                    <div class="gallery">
+            <img src="20260802_170058.jpg" alt="Lente Sigma 17-50mm f/2.8 EX DC OS HSM" onclick="ampliarImagen(this.src)">
+<img src="20260802_170106.jpg" alt="Lente Sigma 17-50mm f/2.8 EX DC OS HSM" onclick="ampliarImagen(this.src)">
+<img src="20260802_170116.jpg" alt="Lente Sigma 17-50mm f/2.8 EX DC OS HSM" onclick="ampliarImagen(this.src)">
+<img src="20260802_170122.jpg" alt="Lente Sigma 17-50mm f/2.8 EX DC OS HSM" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-lente_sigma_17_50">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-lente_sigma_17_50" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-lente_sigma_17_50" onclick="agregarOferta('lente_sigma_17_50')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-impresora_brother">
+                <div class="item-left">
+                    <div class="item-title" id="title-impresora_brother">Impresora Láser Brother HL-L2360DW</div>
+                    <div class="price-badge" id="badge-impresora_brother">Precio Sugerido: $60,000 CLP</div>
+                    <div class="specs-box" id="specs-impresora_brother"><strong>Reseña:</strong> Famosa por ser un "tanque de guerra" que nunca falla. Al ser láser y no de tinta, el tóner no se seca si dejas de imprimir por meses. Además imprime por ambos lados de la hoja automáticamente y vía Wi-Fi desde el celular.<br><br><strong>Ficha Técnica:</strong> Láser Monocromática | 32 ppm | Wi-Fi y Dúplex Automático.</div>
+                    <div class="gallery">
+            <img src="20260802_170211.jpg" alt="Impresora Láser Brother HL-L2360DW" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-impresora_brother">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-impresora_brother" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-impresora_brother" onclick="agregarOferta('impresora_brother')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-maquina_humo">
+                <div class="item-left">
+                    <div class="item-title" id="title-maquina_humo">Máquina de Humo 400W</div>
+                    <div class="price-badge" id="badge-maquina_humo">Precio Sugerido: $20,000 CLP</div>
+                    <div class="specs-box" id="specs-maquina_humo"><strong>Reseña:</strong> El detalle perfecto para animar cualquier fiesta en casa, evento o sesión de fotos. Calienta rápido y en segundos llena una habitación de un denso humo escénico, realzando cualquier luz de colores o láser.<br><br><strong>Ficha Técnica:</strong> Potencia 400W | Calentamiento en 3 minutos | Disparo continuo con control.</div>
+                    <div class="gallery">
+            <img src="20260802_160213.jpg" alt="Máquina de Humo 400W" onclick="ampliarImagen(this.src)">
+<img src="20260802_160224.jpg" alt="Máquina de Humo 400W" onclick="ampliarImagen(this.src)">
+<img src="20260802_160233.jpg" alt="Máquina de Humo 400W" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-maquina_humo">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-maquina_humo" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-maquina_humo" onclick="agregarOferta('maquina_humo')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h2 class="cat-title">4. Entrenamiento, Camping & Indumentaria</h2>
+<h3 class="subcat-title">4.1. Entrenamiento en Casa</h3>
+
+            <div class="item-card" id="card-banca_fullfit">
+                <div class="item-left">
+                    <div class="item-title" id="title-banca_fullfit">Rack + Banca Reclinable Fullfit con Barra y Discos</div>
+                    <div class="price-badge" id="badge-banca_fullfit">Precio Sugerido: $150,000 CLP</div>
+                    <div class="specs-box" id="specs-banca_fullfit"><strong>Reseña:</strong> El set definitivo para armar tu gimnasio en casa y entrenar todo el cuerpo. Incluye un rack ajustable, ideal para sentadillas seguras o para usarlo como soporte de press. La banca reclinable es sólida y multiposición. Viene lista para usar con su barra y discos pesados de hierro.<br><br><strong>Ficha Técnica:</strong> Incluye: Rack ajustable Fullfit, Banca reclinable, 1 Barra estándar con Pad protector Fullfit y un Set de discos pesados de hierro fundido.</div>
+                    <div class="gallery">
+            <img src="1B98C2CD-BDD1-49D7-8083-55D8B818E845_1_105_c.jpeg" alt="Rack + Banca Reclinable Fullfit con Barra y Discos" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-banca_fullfit">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-banca_fullfit" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-banca_fullfit" onclick="agregarOferta('banca_fullfit')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-remadora_waterrower">
+                <div class="item-left">
+                    <div class="item-title" id="title-remadora_waterrower">Máquina de Remo WaterRower</div>
+                    <div class="price-badge" id="badge-remadora_waterrower">Precio Sugerido: $550,000 CLP</div>
+                    <div class="specs-box" id="specs-remadora_waterrower"><strong>Reseña:</strong> La máquina de remo definitiva para el hogar. A diferencia de las ruidosas máquinas magnéticas, su resistencia natural a base de agua proporciona un movimiento suave, un sonido relajante y un desafío que se adapta exactamente a la fuerza que le aplicas, brindando una experiencia idéntica a remar en un lago real.<br><br><strong>Ficha Técnica:</strong> Resistencia natural de fluido/agua | Monitor digital de rendimiento integrado (distancia, tiempo, calorías) | Riel de deslizamiento fluido.</div>
+                    <div class="gallery">
+            <img src="60E11074-192B-4E2D-8543-7470373BDCEE_1_105_c.jpeg" alt="Máquina de Remo WaterRower" onclick="ampliarImagen(this.src)">
+<img src="E34BFCA6-D536-473B-9139-A4D9FA9EF0A6_1_105_c.jpeg" alt="Máquina de Remo WaterRower" onclick="ampliarImagen(this.src)">
+<img src="7F886CD9-CE16-4B40-98BB-BD9D4D2A731D_1_105_c.jpeg" alt="Máquina de Remo WaterRower" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-remadora_waterrower">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-remadora_waterrower" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-remadora_waterrower" onclick="agregarOferta('remadora_waterrower')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">4.2. Ropa Outdoor</h3>
+
+            <div class="item-card" id="card-chaqueta_rossignol">
+                <div class="item-left">
+                    <div class="item-title" id="title-chaqueta_rossignol">Chaqueta Técnica Ski Rossignol Atelier</div>
+                    <div class="price-badge" id="badge-chaqueta_rossignol">Precio Sugerido: $75,000 CLP</div>
+                    <div class="specs-box" id="specs-chaqueta_rossignol"><strong>Reseña:</strong> Indumentaria de gama alta de la colección Atelier Course. Diseñada ergonómicamente para imitar la postura del esquiador. Su membrana de 20K te mantiene totalmente seco frente a ventiscas de nieve o lluvia intensa.<br><br><strong>Ficha Técnica:</strong> Talla: L (EU 50) | Impermeabilidad 20.000mm / Transpirabilidad 20.000g.</div>
+                    <div class="gallery">
+            <img src="20260802_172004.jpg" alt="Chaqueta Técnica Ski Rossignol Atelier" onclick="ampliarImagen(this.src)">
+<img src="20260802_172009.jpg" alt="Chaqueta Técnica Ski Rossignol Atelier" onclick="ampliarImagen(this.src)">
+<img src="20260802_172016.jpg" alt="Chaqueta Técnica Ski Rossignol Atelier" onclick="ampliarImagen(this.src)">
+<img src="20260802_172043.jpg" alt="Chaqueta Técnica Ski Rossignol Atelier" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-chaqueta_rossignol">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-chaqueta_rossignol" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-chaqueta_rossignol" onclick="agregarOferta('chaqueta_rossignol')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-parka_lippi">
+                <div class="item-left">
+                    <div class="item-title" id="title-parka_lippi">Parka Larga Capucha Piel Lippi Thermal</div>
+                    <div class="price-badge" id="badge-parka_lippi">Precio Sugerido: $35,000 CLP</div>
+                    <div class="specs-box" id="specs-parka_lippi"><strong>Reseña:</strong> Corte largo muy elegante para el invierno urbano o paseos al sur. Su relleno sintético de tecnología reciclada atrapa el calor corporal excepcionalmente bien, cortando el viento helado gracias a su gorro con piel sintética.<br><br><strong>Ficha Técnica:</strong> Talla: M (Mujer) | Aislamiento térmico reciclado Lippi.</div>
+                    <div class="gallery">
+            <img src="20260802_172454.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+<img src="20260802_172456.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+<img src="20260802_172505.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+<img src="20260802_172509.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+<img src="20260802_172522.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+<img src="20260802_172525.jpg" alt="Parka Larga Capucha Piel Lippi Thermal" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-parka_lippi">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-parka_lippi" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-parka_lippi" onclick="agregarOferta('parka_lippi')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-pantalon_trangoworld">
+                <div class="item-left">
+                    <div class="item-title" id="title-pantalon_trangoworld">Pantalón Trekking Trangoworld TRX2</div>
+                    <div class="price-badge" id="badge-pantalon_trangoworld">Precio Sugerido: $40,000 CLP</div>
+                    <div class="specs-box" id="specs-pantalon_trangoworld"><strong>Reseña:</strong> Una armadura para la montaña. Su tejido bielástico Free4Move te da total libertad de movimiento en trepadas rocosas, e incluye refuerzos de Kevlar en los tobillos para evitar cortes con crampones o piedras.<br><br><strong>Ficha Técnica:</strong> Talla: L | Línea técnica TRX2 de alta resistencia a la abrasión.</div>
+                    <div class="gallery">
+            <img src="20260802_172055.jpg" alt="Pantalón Trekking Trangoworld TRX2" onclick="ampliarImagen(this.src)">
+<img src="20260802_172104.jpg" alt="Pantalón Trekking Trangoworld TRX2" onclick="ampliarImagen(this.src)">
+<img src="20260802_172116.jpg" alt="Pantalón Trekking Trangoworld TRX2" onclick="ampliarImagen(this.src)">
+<img src="20260802_172120.jpg" alt="Pantalón Trekking Trangoworld TRX2" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-pantalon_trangoworld">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-pantalon_trangoworld" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-pantalon_trangoworld" onclick="agregarOferta('pantalon_trangoworld')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-chaqueta_footjoy">
+                <div class="item-left">
+                    <div class="item-title" id="title-chaqueta_footjoy">Chaqueta Cortaviento Golf FootJoy DryJoys</div>
+                    <div class="price-badge" id="badge-chaqueta_footjoy">Precio Sugerido: $37,500 CLP</div>
+                    <div class="specs-box" id="specs-chaqueta_footjoy"><strong>Reseña:</strong> Favorita entre golfistas profesionales. No solo corta el viento y aguanta la lluvia a la perfección gracias a sus costuras selladas, sino que su diseño súper liviano no restringe el movimiento de los brazos al hacer el swing.<br><br><strong>Ficha Técnica:</strong> Talla: M | Tecnología laminada 100% impermeable extrema.</div>
+                    <div class="gallery">
+            
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-chaqueta_footjoy">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-chaqueta_footjoy" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-chaqueta_footjoy" onclick="agregarOferta('chaqueta_footjoy')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-polera_footjoy">
+                <div class="item-left">
+                    <div class="item-title" id="title-polera_footjoy">Polera Golf Manga Corta FootJoy ProDry</div>
+                    <div class="price-badge" id="badge-polera_footjoy">Precio Sugerido: $20,000 CLP</div>
+                    <div class="specs-box" id="specs-polera_footjoy"><strong>Reseña:</strong> Tela de rendimiento élite que absorbe y evapora el sudor rápidamente. Ideal para jugar golf en verano, cuenta con protección UV bloqueando los rayos dañinos del sol en jornadas al aire libre.<br><br><strong>Ficha Técnica:</strong> Talla: M | Poliéster técnico antimicrobiano (evita olores).</div>
+                    <div class="gallery">
+            <img src="20260802_172704.jpg" alt="Polera Golf Manga Corta FootJoy ProDry" onclick="ampliarImagen(this.src)">
+<img src="20260802_172706.jpg" alt="Polera Golf Manga Corta FootJoy ProDry" onclick="ampliarImagen(this.src)">
+<img src="20260802_172723.jpg" alt="Polera Golf Manga Corta FootJoy ProDry" onclick="ampliarImagen(this.src)">
+<img src="20260802_172727.jpg" alt="Polera Golf Manga Corta FootJoy ProDry" onclick="ampliarImagen(this.src)">
+<img src="20260802_172753.jpg" alt="Polera Golf Manga Corta FootJoy ProDry" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-polera_footjoy">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-polera_footjoy" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-polera_footjoy" onclick="agregarOferta('polera_footjoy')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-pantalon_naturehike">
+                <div class="item-left">
+                    <div class="item-title" id="title-pantalon_naturehike">Pantalón Térmico Pluma Naturehike 800FP</div>
+                    <div class="price-badge" id="badge-pantalon_naturehike">Precio Sugerido: $40,000 CLP</div>
+                    <div class="specs-box" id="specs-pantalon_naturehike"><strong>Reseña:</strong> Salvará tus noches acampando bajo cero en la Patagonia o el desierto. Al ser de pluma de ganso de 800 cuins, calienta brutalmente pero se comprime al tamaño de una naranja pequeña en la mochila.<br><br><strong>Ficha Técnica:</strong> Talla: L | 90% Pluma de ganso blanca ultraliviana (800FP).</div>
+                    <div class="gallery">
+            <img src="20260802_172919.jpg" alt="Pantalón Térmico Pluma Naturehike 800FP" onclick="ampliarImagen(this.src)">
+<img src="20260802_172923.jpg" alt="Pantalón Térmico Pluma Naturehike 800FP" onclick="ampliarImagen(this.src)">
+<img src="20260802_172934.jpg" alt="Pantalón Térmico Pluma Naturehike 800FP" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-pantalon_naturehike">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-pantalon_naturehike" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-pantalon_naturehike" onclick="agregarOferta('pantalon_naturehike')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-poleron_tnf">
+                <div class="item-left">
+                    <div class="item-title" id="title-poleron_tnf">Polerón Fleece The North Face TKA 100</div>
+                    <div class="price-badge" id="badge-poleron_tnf">Precio Sugerido: $25,000 CLP</div>
+                    <div class="specs-box" id="specs-poleron_tnf"><strong>Reseña:</strong> El clásico micropolar de media estación. Es esa capa de abrigo ligera que llevas a todas partes: suave al tacto, muy duradera frente a lavados y fabricada bajo estándares ecológicos reciclados.<br><br><strong>Ficha Técnica:</strong> Talla: L (Hombre) | Microfleece 100% poliéster TKA 100.</div>
+                    <div class="gallery">
+            <img src="20260802_172337.jpg" alt="Polerón Fleece The North Face TKA 100" onclick="ampliarImagen(this.src)">
+<img src="20260802_172341.jpg" alt="Polerón Fleece The North Face TKA 100" onclick="ampliarImagen(this.src)">
+<img src="20260802_172354.jpg" alt="Polerón Fleece The North Face TKA 100" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-poleron_tnf">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-poleron_tnf" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-poleron_tnf" onclick="agregarOferta('poleron_tnf')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">4.3. Camping y Climatización</h3>
+
+            <div class="item-card" id="card-aire_kendal">
+                <div class="item-left">
+                    <div class="item-title" id="title-aire_kendal">Aire Acondicionado Portátil Kendal 9000 BTU</div>
+                    <div class="price-badge" id="badge-aire_kendal">Precio Sugerido: $90,000 CLP</div>
+                    <div class="specs-box" id="specs-aire_kendal"><strong>Reseña:</strong> La salvación para las olas de calor. Al ser portátil, puedes moverlo del living a la pieza. No requiere instalaciones complejas en la pared y su capacidad enfría rápidamente habitaciones estándar de hasta 15-20 m².<br><br><strong>Ficha Técnica:</strong> 9.000 BTU/h | 3 en 1: Frío, Calor y Deshumidificador | Incluye manguera de ventana.</div>
+                    <div class="gallery">
+            <img src="20260802_155429.jpg" alt="Aire Acondicionado Portátil Kendal 9000 BTU" onclick="ampliarImagen(this.src)">
+<img src="20260802_155435.jpg" alt="Aire Acondicionado Portátil Kendal 9000 BTU" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-aire_kendal">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-aire_kendal" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-aire_kendal" onclick="agregarOferta('aire_kendal')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-cooler_azul_ruedas">
+                <div class="item-left">
+                    <div class="item-title" id="title-cooler_azul_ruedas">Cooler Rígido Ruedas Azul/Blanco 60L</div>
+                    <div class="price-badge" id="badge-cooler_azul_ruedas">Precio Sugerido: $35,000 CLP</div>
+                    <div class="specs-box" id="specs-cooler_azul_ruedas"><strong>Reseña:</strong> Olvídate de cargar peso en la playa o el asado. Cuenta con un mango telescópico y ruedas grandes para moverlo fácil sobre arena dura o tierra. Su capacidad es gigante, caben varias botellas paradas y hielo de sobra.<br><br><strong>Ficha Técnica:</strong> Capacidad ~60 Litros (~90 Latas) | Ruedas Heavy Duty integradas.</div>
+                    <div class="gallery">
+            <img src="20260802_160706.jpg" alt="Cooler Rígido Ruedas Azul/Blanco 60L" onclick="ampliarImagen(this.src)">
+<img src="20260802_160712.jpg" alt="Cooler Rígido Ruedas Azul/Blanco 60L" onclick="ampliarImagen(this.src)">
+<img src="20260802_160727.jpg" alt="Cooler Rígido Ruedas Azul/Blanco 60L" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cooler_azul_ruedas">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cooler_azul_ruedas" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cooler_azul_ruedas" onclick="agregarOferta('cooler_azul_ruedas')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-cooler_coleman_rojo">
+                <div class="item-left">
+                    <div class="item-title" id="title-cooler_coleman_rojo">Cooler Coleman Performance 48QT Rojo</div>
+                    <div class="price-badge" id="badge-cooler_coleman_rojo">Precio Sugerido: $25,000 CLP</div>
+                    <div class="specs-box" id="specs-cooler_coleman_rojo"><strong>Reseña:</strong> El icónico cooler de camping americano. Su tecnología ThermOZONE mantiene el hielo hasta 3 días a temperaturas de verano (hasta 32°C). Tiene un tapón inferior a prueba de fugas para vaciar el agua al final del día.<br><br><strong>Ficha Técnica:</strong> Capacidad 45.4 Litros (48 Quarts) | Asas bidireccionales pivotantes.</div>
+                    <div class="gallery">
+            <img src="20260802_160429.jpg" alt="Cooler Coleman Performance 48QT Rojo" onclick="ampliarImagen(this.src)">
+<img src="20260802_160443.jpg" alt="Cooler Coleman Performance 48QT Rojo" onclick="ampliarImagen(this.src)">
+<img src="20260802_160456.jpg" alt="Cooler Coleman Performance 48QT Rojo" onclick="ampliarImagen(this.src)">
+<img src="20260802_160500.jpg" alt="Cooler Coleman Performance 48QT Rojo" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cooler_coleman_rojo">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cooler_coleman_rojo" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cooler_coleman_rojo" onclick="agregarOferta('cooler_coleman_rojo')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-cooler_rubbermaid_blanco">
+                <div class="item-left">
+                    <div class="item-title" id="title-cooler_rubbermaid_blanco">Cooler Rubbermaid Marine Ultra Blanco 45L</div>
+                    <div class="price-badge" id="badge-cooler_rubbermaid_blanco">Precio Sugerido: $30,000 CLP</div>
+                    <div class="specs-box" id="specs-cooler_rubbermaid_blanco"><strong>Reseña:</strong> Edición Marina, diseñado para aguantar la exposición directa al sol todo el día en lanchas o playas sin que se rompa el plástico (tiene protección UV) y con tornillería resistente a la salinidad.<br><br><strong>Ficha Técnica:</strong> Capacidad ~45 Litros | Inhibidores de radiación solar | Bisagras reforzadas.</div>
+                    <div class="gallery">
+            <img src="20260802_162453.jpg" alt="Cooler Rubbermaid Marine Ultra Blanco 45L" onclick="ampliarImagen(this.src)">
+<img src="20260802_162456.jpg" alt="Cooler Rubbermaid Marine Ultra Blanco 45L" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cooler_rubbermaid_blanco">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cooler_rubbermaid_blanco" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cooler_rubbermaid_blanco" onclick="agregarOferta('cooler_rubbermaid_blanco')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-cooler_klack_azul">
+                <div class="item-left">
+                    <div class="item-title" id="title-cooler_klack_azul">Cooler Klack Neveta Portátil Azul 32L</div>
+                    <div class="price-badge" id="badge-cooler_klack_azul">Precio Sugerido: $15,000 CLP</div>
+                    <div class="specs-box" id="specs-cooler_klack_azul"><strong>Reseña:</strong> Un cooler térmico intermedio y súper liviano. Ideal para salidas familiares de día completo a parques o excursiones gracias a su núcleo aislante de alta densidad EPS que evita la fuga térmica.<br><br><strong>Ficha Técnica:</strong> Capacidad 32 Litros | Aislamiento en poliestireno expandido de grado alimenticio.</div>
+                    <div class="gallery">
+            
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-cooler_klack_azul">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-cooler_klack_azul" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-cooler_klack_azul" onclick="agregarOferta('cooler_klack_azul')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h2 class="cat-title">5. Muebles, Decoración & Artículos del Hogar</h2>
+<h3 class="subcat-title">5.1. Electrodomésticos</h3>
+
+            <div class="item-card" id="card-lavadora_samsung">
+                <div class="item-left">
+                    <div class="item-title" id="title-lavadora_samsung">Lavadora/Secadora Samsung EcoBubble 15kg/8kg</div>
+                    <div class="price-badge" id="badge-lavadora_samsung">Precio Sugerido: $350,000 CLP</div>
+                    <div class="specs-box" id="specs-lavadora_samsung"><strong>Reseña:</strong> Una maravilla de la tecnología para el hogar que te ahorra tiempo y esfuerzo. Su sistema EcoBubble penetra las telas para una limpieza profunda incluso en agua fría, cuidando tu ropa. Su motor Digital Inverter garantiza un funcionamiento súper silencioso y de gran durabilidad. Además, cuenta con la increíble función AutoDispense: solo llenas el estanque de detergente una vez y la máquina calcula sola cuánto usar en cada lavado.<br><br><strong>Ficha Técnica:</strong> Capacidad de Lavado: 15 kg | Capacidad de Secado: 8 kg | Panel digital, tecnología EcoBubble y AutoDispense.</div>
+                    <div class="gallery">
+            <img src="51546376-A4A0-44C4-8D79-F2CAECA16315_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+<img src="3761ED9C-D842-4B78-B1D6-F2E4A5020369_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+<img src="DD1A470B-6523-43B8-A2D6-9691B804DCCC_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+<img src="0CEEFF36-1BF3-4526-B305-0A13765DBFDC_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+<img src="5A183C22-6713-45C8-9A94-E160B552BABF_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+<img src="5140EFFD-3690-49D4-9A6B-F23E7945B1BD_1_105_c.jpeg" alt="Lavadora/Secadora Samsung EcoBubble 15kg/8kg" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-lavadora_samsung">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-lavadora_samsung" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-lavadora_samsung" onclick="agregarOferta('lavadora_samsung')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            <h3 class="subcat-title">5.2. Muebles y Exteriores</h3>
+
+            <div class="item-card" id="card-porton_madera">
+                <div class="item-left">
+                    <div class="item-title" id="title-porton_madera">Portón Doble Tallado Madera Maciza</div>
+                    <div class="price-badge" id="badge-porton_madera">Precio Sugerido: $250,000 CLP</div>
+                    <div class="specs-box" id="specs-porton_madera"><strong>Reseña:</strong> Pieza arquitectónica única, estilo colonial o campestre. Ideal para darle un toque imponente a la entrada principal de un fundo, parcela, o para usarla como una puerta decorativa majestuosa en proyectos de interiorismo.<br><br><strong>Ficha Técnica:</strong> Madera maciza pesada (noble) | Apliques metálicos forjados a mano de época.</div>
+                    <div class="gallery">
+            <img src="20260802_153230.jpg" alt="Portón Doble Tallado Madera Maciza" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-porton_madera">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-porton_madera" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-porton_madera" onclick="agregarOferta('porton_madera')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-rampa_moto">
+                <div class="item-left">
+                    <div class="item-title" id="title-rampa_moto">Rampa Aluminio Plegable Moto/ATV</div>
+                    <div class="price-badge" id="badge-rampa_moto">Precio Sugerido: $42,500 CLP</div>
+                    <div class="specs-box" id="specs-rampa_moto"><strong>Reseña:</strong> Carga tu moto de enduro, cuatrimoto o cortacésped a tu camioneta en segundos, tú solo y sin esfuerzo. Como es de aluminio no se oxida, es sorprendentemente liviana para cargar, y se dobla por la mitad para guardarla fácil.<br><br><strong>Ficha Técnica:</strong> Aluminio 6061 ultra liviano (~7.2 kg) | Soporta hasta 340 kg de carga segura.</div>
+                    <div class="gallery">
+            <img src="20260802_154618.jpg" alt="Rampa Aluminio Plegable Moto/ATV" onclick="ampliarImagen(this.src)">
+<img src="20260802_154624.jpg" alt="Rampa Aluminio Plegable Moto/ATV" onclick="ampliarImagen(this.src)">
+<img src="20260802_154628.jpg" alt="Rampa Aluminio Plegable Moto/ATV" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-rampa_moto">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-rampa_moto" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-rampa_moto" onclick="agregarOferta('rampa_moto')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+            <div class="item-card" id="card-espejo_textil">
+                <div class="item-left">
+                    <div class="item-title" id="title-espejo_textil">Espejo Artesanal Marco Textil Ovalado</div>
+                    <div class="price-badge" id="badge-espejo_textil">Precio Sugerido: $25,000 CLP</div>
+                    <div class="specs-box" id="specs-espejo_textil"><strong>Reseña:</strong> Detalles que le dan alma a los espacios. Este espejo presenta un marco con tapicería artesanal estilo patchwork indio/boho, perfecto para sumar textura y colores cálidos a una entrada, dormitorio o sala de estar.<br><br><strong>Ficha Técnica:</strong> Formato ovalado de pared | Marco ancho de tapizado artesanal con bordados a mano.</div>
+                    <div class="gallery">
+            <img src="20260802_154506.jpg" alt="Espejo Artesanal Marco Textil Ovalado" onclick="ampliarImagen(this.src)">
+<img src="20260802_154504.jpg" alt="Espejo Artesanal Marco Textil Ovalado" onclick="ampliarImagen(this.src)">
+<img src="20260802_154513.jpg" alt="Espejo Artesanal Marco Textil Ovalado" onclick="ampliarImagen(this.src)">
+
+                    </div>
+                </div>
+                <div class="offer-box" id="offer-box-espejo_textil">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-espejo_textil" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-espejo_textil" onclick="agregarOferta('espejo_textil')">🛒 Guardar en Carrito</button>
+                </div>
+            </div>
+            
+
+    <div id="cart-bar" class="cart-bar">
+        <div class="cart-text">🛒 <span id="cart-count">0</span> ofertas acumuladas (Total: $<span id="cart-total">0</span> CLP) <span id="cart-envio-text" style="color:#e11d48; font-size:13px; display:none;">(Incluye Despacho)</span></div>
+        <button class="btn-whatsapp" onclick="enviarFormularioFinal()">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.98 1.005-3.645-.235-.373a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.882-9.882 9.882m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar Oferta por WhatsApp
+        </button>
+    </div>
+
+    <!-- MODAL PARA IMAGENES -->
+    <div id="imageModal" class="modal" onclick="cerrarImagen()">
+        <img id="modalImg" src="">
+    </div>
+
+    <script>
+        let carrito = {};
+        
+        let mods = JSON.parse(localStorage.getItem('modificaciones_garage')) || {};
+        document.addEventListener("DOMContentLoaded", function() {
+            Object.keys(mods).forEach(id => {
+                if(document.getElementById('title-' + id)) document.getElementById('title-' + id).innerText = mods[id].titulo;
+                if(document.getElementById('specs-' + id)) document.getElementById('specs-' + id).innerHTML = mods[id].specs;
+                if(document.getElementById('badge-' + id)) document.getElementById('badge-' + id).innerText = "Precio Sugerido: $" + mods[id].precio.toLocaleString('es-CL') + " CLP";
+                
+                if(mods[id].fotos && mods[id].fotos.length > 0) {
+                    let gallery = document.querySelector('#card-' + id + ' .gallery');
+                    if(gallery) {
+                        gallery.innerHTML = "";
+                        mods[id].fotos.forEach(img => {
+                            let imgElement = document.createElement('img');
+                            imgElement.src = img;
+                            imgElement.onclick = function() { ampliarImagen(this.src); };
+                            gallery.appendChild(imgElement);
+                        });
+                    }
+                }
+            });
+            
+            let estados_venta = JSON.parse(localStorage.getItem('estados_garage_vendido')) || {};
+            Object.keys(estados_venta).forEach(id => {
+                if(estados_venta[id] === 'vendido') {
+                    let badge = document.getElementById('badge-' + id);
+                    if (badge) { badge.innerText = "⛔ VENDIDO"; badge.style.background = "#475569"; }
+                    
+                    let offerBox = document.getElementById('offer-box-' + id);
+                    if (offerBox) { 
+                        offerBox.innerHTML = "<h3 style='color:#475569; margin:0;'>Este producto ya fue vendido</h3>"; 
+                        offerBox.style.background = "#f1f5f9"; 
+                        offerBox.style.border = "2px solid #cbd5e1";
+                    }
+                    
+                    let card = document.getElementById('card-' + id);
+                    if(card) { card.style.opacity = "0.6"; }
+                }
+            });
+        });
+
+        function agregarOferta(id) {
+            let titulo = document.getElementById('title-' + id).innerText;
+            let input = document.getElementById('input-offer-' + id);
+            let monto = parseInt(input.value);
+
+            if (isNaN(monto) || monto <= 0) { alert("Ingresa un monto válido."); return; }
+
+            carrito[id] = { titulo: titulo, monto: monto };
+            
+            let btn = document.getElementById('btn-add-' + id);
+            btn.innerHTML = "✅ Guardado ($" + monto.toLocaleString('es-CL') + ")";
+            btn.style.background = "#15803d";
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            let count = Object.keys(carrito).length;
+            let total = Object.values(carrito).reduce((acc, curr) => acc + curr.monto, 0);
+            
+            let necesitaDespacho = document.getElementById('userDespacho').checked;
+            if (necesitaDespacho && count > 0) {
+                total += 50000;
+                document.getElementById('cart-envio-text').style.display = 'inline';
+            } else {
+                document.getElementById('cart-envio-text').style.display = 'none';
+            }
+            
+            let bar = document.getElementById('cart-bar');
+            if (count > 0) {
+                bar.style.display = 'block';
+                document.getElementById('cart-count').innerText = count;
+                document.getElementById('cart-total').innerText = total.toLocaleString('es-CL');
+            } else {
+                bar.style.display = 'none';
+            }
+        }
+
+        function enviarFormularioFinal() {
+            let nombre = document.getElementById('userName').value.trim();
+            let telefono = document.getElementById('userPhone').value.trim();
+            let email = document.getElementById('userEmail').value.trim();
+            let necesitaDespacho = document.getElementById('userDespacho').checked;
+
+            if (Object.keys(carrito).length === 0) {
+                alert("No has agregado ninguna oferta. Ingresa un monto y presiona 'Guardar en Carrito' en algún producto.");
+                return;
+            }
+
+            if (!nombre || !telefono) {
+                alert("Por favor, ingresa tu Nombre y Teléfono en la parte superior antes de enviar.");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            let items = Object.values(carrito);
+            let total = 0;
+            let detalleStr = "";
+            let msjWhatsApp = `Hola Benjamín, soy *${nombre}*.
+
+Te quiero hacer la siguiente oferta:
+
+`;
+
+            items.forEach(i => {
+                let valStr = i.monto.toLocaleString('es-CL');
+                detalleStr += `- ${i.titulo} ($${valStr} CLP)
+`;
+                msjWhatsApp += `📦 *${i.titulo}*
+💰 Ofrezco: $${valStr} CLP
+
+`;
+                total += i.monto;
+            });
+
+            if (necesitaDespacho) {
+                detalleStr += `- Despacho a Domicilio ($50.000 CLP)
+`;
+                msjWhatsApp += `🚚 *Despacho a Domicilio* (+ $50.000 CLP)
+
+`;
+                total += 50000;
+            }
+
+            let totalStr = total.toLocaleString('es-CL');
+            msjWhatsApp += `*TOTAL FINAL: $${totalStr} CLP*
+
+¿Te parece bien?`;
+            
+            let urlAppScript = "https://script.google.com/macros/s/AKfycbzX10XlQ9lkI_kZaZhAFjb5VAnxvszBvMZQz0T6b7tDOsjU-tmWGTNAqXJDnc4AHYXPlg/exec";
+            let dataGoogle = {
+                nombre: nombre,
+                telefono: telefono,
+                email: email,
+                detalleStr: detalleStr,
+                totalStr: totalStr
+            };
+
+            let urlWhatsApp = `https://api.whatsapp.com/send?phone=56975593099&text=${encodeURIComponent(msjWhatsApp)}`;
+
+            if(urlAppScript !== "PEGAR_AQUI_LA_URL_DE_GOOGLE") {
+                fetch(urlAppScript, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    keepalive: true,
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(dataGoogle)
+                }).catch(e => console.log(e));
+            }
+
+            window.location.href = urlWhatsApp;
+        }
+
+        function ampliarImagen(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        function cerrarImagen() { document.getElementById('imageModal').style.display = 'none'; }
+    </script>
+</body>
+</html>
