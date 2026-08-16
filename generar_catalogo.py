@@ -355,7 +355,8 @@ html_publico_template = """<!DOCTYPE html>
         /* BARRA FLOTANTE */
         .cart-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 2px solid #e2e8f0; padding: 15px 0; text-align: center; z-index: 1000; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); }
         .cart-text { font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
-        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .btn-whatsapp:disabled { opacity: 0.7; cursor: not-allowed; }
         
         /* MODAL IMÁGENES */
         .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: zoom-out; }
@@ -475,26 +476,33 @@ __PRODUCTOS_HTML__
                 return;
             }
 
+            // Cambiamos el botón a estado "cargando"
+            let btnWhatsapp = document.querySelector('.btn-whatsapp');
+            let textoOriginal = btnWhatsapp.innerHTML;
+            btnWhatsapp.innerHTML = "⏳ Registrando oferta...";
+            btnWhatsapp.style.background = "#64748b";
+            btnWhatsapp.disabled = true;
+
             let items = Object.values(carrito);
             let total = 0;
             let detalleStr = "";
-            let msjWhatsApp = `Hola Benjamín, soy *${nombre}*.\n\nTe quiero hacer la siguiente oferta:\n\n`;
+            let msjWhatsApp = `Hola Benjamín, soy *${nombre}*.\\n\\nTe quiero hacer la siguiente oferta:\\n\\n`;
 
             items.forEach(i => {
                 let valStr = i.monto.toLocaleString('es-CL');
-                detalleStr += `- ${i.titulo} ($${valStr} CLP)\n`;
-                msjWhatsApp += `📦 *${i.titulo}*\n💰 Ofrezco: $${valStr} CLP\n\n`;
+                detalleStr += `- ${i.titulo} ($${valStr} CLP)\\n`;
+                msjWhatsApp += `📦 *${i.titulo}*\\n💰 Ofrezco: $${valStr} CLP\\n\\n`;
                 total += i.monto;
             });
 
             if (necesitaDespacho) {
-                detalleStr += `- Despacho a Domicilio ($50.000 CLP)\n`;
-                msjWhatsApp += `🚚 *Despacho a Domicilio* (+ $50.000 CLP)\n\n`;
+                detalleStr += `- Despacho a Domicilio ($50.000 CLP)\\n`;
+                msjWhatsApp += `🚚 *Despacho a Domicilio* (+ $50.000 CLP)\\n\\n`;
                 total += 50000;
             }
 
             let totalStr = total.toLocaleString('es-CL');
-            msjWhatsApp += `*TOTAL FINAL: $${totalStr} CLP*\n\n¿Te parece bien?`;
+            msjWhatsApp += `*TOTAL FINAL: $${totalStr} CLP*\\n\\n¿Te parece bien?`;
             
             let urlAppScript = "[LINK_GOOGLE_APPS_SCRIPT]";
             let dataGoogle = {
@@ -511,13 +519,18 @@ __PRODUCTOS_HTML__
                 fetch(urlAppScript, {
                     method: 'POST',
                     mode: 'no-cors',
-                    keepalive: true,
-                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify(dataGoogle)
                 }).catch(e => console.log(e));
             }
 
-            window.location.href = urlWhatsApp;
+            // Damos 1.5 segundos a la señal para que viaje a Google antes de abrir WhatsApp
+            setTimeout(function() {
+                window.location.href = urlWhatsApp;
+                // Restauramos el botón por si el usuario vuelve atrás en el navegador
+                btnWhatsapp.innerHTML = textoOriginal;
+                btnWhatsapp.style.background = "#25D366";
+                btnWhatsapp.disabled = false;
+            }, 1500);
         }
 
         function ampliarImagen(src) {
@@ -762,4 +775,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Catálogo actualizado con el Sofá Milk.")
+print("✅ Conexión con Google Sheets asegurada y Sofá Milk agregado.")
