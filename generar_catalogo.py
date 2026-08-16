@@ -26,14 +26,13 @@ precios_definidos = {
     "poleron_tnf": 25000, "aire_kendal": 90000, "cooler_azul_ruedas": 35000,
     "cooler_coleman_rojo": 25000, "cooler_rubbermaid_blanco": 30000, "cooler_rubbermaid_rojo": 18000,
     "cooler_klack_azul": 15000, "porton_madera": 250000, "rampa_moto": 42500, "espejo_textil": 25000,
-    "cadenas_nieve_power": 45000,
-    "cadenas_nieve_tacoma": 45000,
-    "home_theater_yamaha": 350000,
-    "pack_fox_enduro": 95000,
-    "remadora_waterrower": 550000,
-    "banca_fullfit": 150000,      
-    "tv_samsung_curvo": 250000,   
-    "lavadora_samsung": 350000    
+    "cadenas_nieve_power": 45000, "cadenas_nieve_tacoma": 45000, "home_theater_yamaha": 350000,
+    "pack_fox_enduro": 95000, "remadora_waterrower": 550000, "banca_fullfit": 150000,      
+    "tv_samsung_curvo": 250000, "lavadora_samsung": 350000,
+    "refrigerador_samsung": 300000,
+    "refrigerador_fdv": 680000,
+    "comedor_vidrio_madera": 600000,
+    "sillon_milk": 680000
 }
 
 asignaciones = {
@@ -87,7 +86,18 @@ asignaciones = {
   "remadora_waterrower": ["60E11074-192B-4E2D-8543-7470373BDCEE_1_105_c.jpeg", "E34BFCA6-D536-473B-9139-A4D9FA9EF0A6_1_105_c.jpeg", "7F886CD9-CE16-4B40-98BB-BD9D4D2A731D_1_105_c.jpeg"],
   "banca_fullfit": ["1B98C2CD-BDD1-49D7-8083-55D8B818E845_1_105_c.jpeg", "A43E0409-CC33-4934-BA78-716099A9BB7B_1_105_c.jpeg", "0A722E56-FADC-4749-88D0-EC5F3047004F_1_105_c.jpeg"],
   "tv_samsung_curvo": ["3EE1128D-9F3E-49FF-A9B2-60902F824971_1_105_c.jpeg", "33113E0D-A591-4E46-AC76-BF5DD65605B7_1_105_c.jpg", "EA722B7E-4B00-4626-B98E-4F5C0D418CCC_1_105_c.jpg"],
-  "lavadora_samsung": ["51546376-A4A0-44C4-8D79-F2CAECA16315_1_105_c.jpg", "5140EFFD-3690-49D4-9A6B-F23E7945B1BD_1_105_c.jpeg", "DD1A470B-6523-43B8-A2D6-9691B804DCCC_1_105_c.jpeg", "3761ED9C-D842-4B78-B1D6-F2E4A5020369_1_105_c.jpg"]
+  "lavadora_samsung": ["51546376-A4A0-44C4-8D79-F2CAECA16315_1_105_c.jpg", "5140EFFD-3690-49D4-9A6B-F23E7945B1BD_1_105_c.jpeg", "DD1A470B-6523-43B8-A2D6-9691B804DCCC_1_105_c.jpeg", "3761ED9C-D842-4B78-B1D6-F2E4A5020369_1_105_c.jpg"],
+  "refrigerador_samsung": ["278792DE-5228-4CB7-81F2-E0FDDFA56C25_1_105_c.jpeg"],
+  "refrigerador_fdv": ["47840D65-7D52-4304-8935-C50032FBC71D_1_105_c.jpeg", "80D72623-63B1-40B4-8C89-F9505DEE8969_1_105_c.jpeg"],
+  "comedor_vidrio_madera": ["WhatsApp Image 2026-08-15 at 18.31.10.jpg", "WhatsApp Image 2026-08-15 at 18.31.11 (1).jpg", "WhatsApp Image 2026-08-15 at 18.31.11.jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (4).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (3).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (2).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (1).jpeg"],
+  "sillon_milk": [
+      "WhatsApp Image 2026-08-15 at 18.34.11 (1).jpg",
+      "WhatsApp Image 2026-08-15 at 18.34.11.jpg",
+      "WhatsApp Image 2026-08-15 at 18.34.10 (5).jpg",
+      "WhatsApp Image 2026-08-15 at 18.34.10 (4).jpg",
+      "WhatsApp Image 2026-08-15 at 18.34.10 (3).jpg",
+      "WhatsApp Image 2026-08-15 at 18.34.10.jpeg"
+  ]
 }
 
 # =========================================================
@@ -108,7 +118,7 @@ catalogo = [
             {
                 "nombre": "1.2. Skis All-Mountain & Pista",
                 "items": [
-                    {"id": "ski_rossignol", "titulo": "Skis Rossignol Experience 80 Carbon - 166 cm", "specs": "<strong>Reseña:</strong> El equilibrio perfecto para esquiadores intermedios-avanzados. Reforzado con carbono para darte respuesta inmediata sin exigir el esfuerzo físico de un esquí de competición.<br><br><strong>Ficha Técnica:</strong> Longitud: 166 cm | Patín: 80 mm | Núcleo: Paulownia Wood Core con Carbono."},
+                    {"id": "ski_rossignol", "titulo": "Skis Rossignol Experience 80 Carbon - 166 cm", "specs": "<strong>Reseña:</strong> El balance perfecto para esquiadores intermedios-avanzados. Reforzado con carbono para darte respuesta inmediata sin exigir el esfuerzo físico de un esquí de competición.<br><br><strong>Ficha Técnica:</strong> Longitud: 166 cm | Patín: 80 mm | Núcleo: Paulownia Wood Core con Carbono."},
                     {"id": "ski_head", "titulo": "Skis Head Total JOY SLR (Mujer)", "specs": "<strong>Reseña:</strong> Diseñados específicamente para mujeres, utilizando tecnología Graphene. Son súper permisivos, fáciles de girar y evitan la fatiga en las piernas.<br><br><strong>Ficha Técnica:</strong> Construcción: LIBRA Graphene & Karuba Wood Core | Incluye fijaciones ajustables."},
                     {"id": "ski_armada", "titulo": "Skis Freeride Armada ARV 96", "specs": "<strong>Reseña:</strong> El esquí más icónico de freestyle/freeride. Su perfil Rocker permite saltar en el park o esquiar de espaldas.<br><br><strong>Ficha Técnica:</strong> Perfil: AR Freeride Rocker Twin Tip | Canto reforzado 2.5 Impact Edge."},
                     {"id": "ski_dynastar", "titulo": "Skis Dynastar Speed Team Course WC - 160 cm", "specs": "<strong>Reseña:</strong> Un esquí de linaje de Copa del Mundo adaptado para pista. Está pensado para quienes aman bajar rápido y hacer giros cortos y precisos en nieve dura o hielo.<br><br><strong>Ficha Técnica:</strong> Longitud: 160 cm | Estructura: Sandwich Titanal de Competición."}
@@ -224,12 +234,16 @@ catalogo = [
             {
                 "nombre": "5.1. Electrodomésticos",
                 "items": [
-                    {"id": "lavadora_samsung", "titulo": "Lavadora/Secadora Samsung EcoBubble 15kg/8kg", "specs": "<strong>Reseña:</strong> Una maravilla de la tecnología para el hogar que te ahorra tiempo y esfuerzo. Su sistema EcoBubble penetra las telas para una limpieza profunda incluso en agua fría, cuidando tu ropa. Su motor Digital Inverter garantiza un funcionamiento súper silencioso y de gran durabilidad. Además, cuenta con la increíble función AutoDispense: solo llenas el estanque de detergente una vez y la máquina calcula sola cuánto usar en cada lavado.<br><br><strong>Ficha Técnica:</strong> Capacidad de Lavado: 15 kg | Capacidad de Secado: 8 kg | Panel digital, tecnología EcoBubble y AutoDispense."}
+                    {"id": "lavadora_samsung", "titulo": "Lavadora/Secadora Samsung EcoBubble 15kg/8kg", "specs": "<strong>Reseña:</strong> Una maravilla de la tecnología para el hogar que te ahorra tiempo y esfuerzo. Su sistema EcoBubble penetra las telas para una limpieza profunda incluso en agua fría, cuidando tu ropa. Su motor Digital Inverter garantiza un funcionamiento súper silencioso y de gran durabilidad. Además, cuenta con la increíble función AutoDispense: solo llenas el estanque de detergente una vez y la máquina calcula sola cuánto usar en cada lavado.<br><br><strong>Ficha Técnica:</strong> Capacidad de Lavado: 15 kg | Capacidad de Secado: 8 kg | Panel digital, tecnología EcoBubble y AutoDispense."},
+                    {"id": "refrigerador_samsung", "titulo": "Refrigerador Samsung Bottom Freezer Negro Glass", "specs": "<strong>Reseña:</strong> Elegante refrigerador Samsung con acabado de cristal negro que le dará un toque ultra moderno a tu cocina. Su diseño Bottom Freezer (congelador abajo) es súper cómodo para acceder a los alimentos frescos sin agacharte. Cuenta con panel digital exterior y tecnología Digital Inverter que ahorra energía y hace muy poco ruido.<br><br><strong>Ficha Técnica:</strong> Tecnología Digital Inverter | Panel de control táctil exterior | Acabado Black Glass."},
+                    {"id": "refrigerador_fdv", "titulo": "Refrigerador FDV Side by Side Black No Frost", "specs": "<strong>Reseña:</strong> Un gigante para familias grandes. Este refrigerador de dos puertas (Side by Side) de la marca FDV destaca por su gran capacidad de almacenamiento y su diseño sofisticado en color negro mate. Cuenta con sistema No Frost para olvidarte de descongelar y paneles digitales independientes para cada lado.<br><br><strong>Ficha Técnica:</strong> Diseño Side by Side (Dos puertas) | Sistema No Frost | Paneles de control de temperatura independientes."}
                 ]
             },
             {
                 "nombre": "5.2. Muebles y Exteriores",
                 "items": [
+                    {"id": "sillon_milk", "titulo": "Sofá Seccional en L Tienda Milk (Fundas Lavables)", "specs": "<strong>Reseña:</strong> El sofá definitivo para relajarse en familia. De la reconocida tienda de diseño Milk, este amplio seccional destaca por su máxima comodidad, profundidad y estética limpia en tono crudo. Lo mejor: todas sus fundas son 100% desmontables y lavables en lavadora, ideal para un mantenimiento fácil e impecable.<br><br><strong>Ficha Técnica:</strong> Formato: Seccional en L | Tapicería: Fundas desmontables y lavables | Origen: Tienda Milk."},
+                    {"id": "comedor_vidrio_madera", "titulo": "Mesa de Comedor Vidrio y Madera Amoblé (240x140 cm)", "specs": "<strong>Reseña:</strong> Una mesa de comedor imponente y de diseño arquitectónico espectacular. Cuenta con una cubierta de cristal templado de gran grosor y formato extra grande (2,4 metros), ideal para 10-12 personas. Su base es una verdadera escultura que combina cristal estructural con un macizo bloque de madera noble.<br><br><strong>Ficha Técnica:</strong> Dimensiones: 240 cm de largo x 140 cm de ancho | Materiales: Cristal templado y madera maciza | Estilo Amoblé."},
                     {"id": "porton_madera", "titulo": "Portón Doble Tallado Madera Maciza", "specs": "<strong>Reseña:</strong> Pieza arquitectónica única, estilo colonial o campestre. Ideal para darle un toque imponente a la entrada principal de un fundo, parcela, o para usarla como una puerta decorativa majestuosa en proyectos de interiorismo.<br><br><strong>Ficha Técnica:</strong> Madera maciza pesada (noble) | Apliques metálicos forjados a mano de época."},
                     {"id": "rampa_moto", "titulo": "Rampa Aluminio Plegable Moto/ATV", "specs": "<strong>Reseña:</strong> Carga tu moto de enduro, cuatrimoto o cortacésped a tu camioneta en segundos, tú solo y sin esfuerzo. Como es de aluminio no se oxida, es sorprendentemente liviana para cargar, y se dobla por la mitad para guardarla fácil.<br><br><strong>Ficha Técnica:</strong> Aluminio 6061 ultra liviano (~7.2 kg) | Soporta hasta 340 kg de carga segura."},
                     {"id": "espejo_textil", "titulo": "Espejo Artesanal Marco Textil Ovalado", "specs": "<strong>Reseña:</strong> Detalles que le dan alma a los espacios. Este espejo presenta un marco con tapicería artesanal estilo patchwork indio/boho, perfecto para sumar textura y colores cálidos a una entrada, dormitorio o sala de estar.<br><br><strong>Ficha Técnica:</strong> Formato ovalado de pared | Marco ancho de tapizado artesanal con bordados a mano."}
@@ -245,7 +259,6 @@ catalogo = [
 mods_guardadas = {}
 vendidos_guardados = {}
 
-# Leer el nuevo JSON integral generado por el Admin
 if os.path.exists("configuracion_garage.json"):
     try:
         with open("configuracion_garage.json", "r", encoding="utf-8") as f:
@@ -255,7 +268,6 @@ if os.path.exists("configuracion_garage.json"):
     except Exception:
         pass
 
-# Leer archivo antiguo por si acaso
 if os.path.exists("nuevas_fotos_asignadas.json"):
     try:
         with open("nuevas_fotos_asignadas.json", "r", encoding="utf-8") as f:
@@ -267,7 +279,6 @@ if os.path.exists("nuevas_fotos_asignadas.json"):
     except Exception:
         pass
 
-# Aplicar mods guardadas a la base de datos de Python
 for cat in catalogo:
     for subcat in cat["subcategorias"]:
         for item in subcat["items"]:
@@ -278,7 +289,6 @@ for cat in catalogo:
                 precios_definidos[item_id] = mods_guardadas[item_id].get("precio", precios_definidos.get(item_id, 50000))
                 asignaciones[item_id] = mods_guardadas[item_id].get("fotos", asignaciones.get(item_id, []))
 
-# Construir lista plana actualizada para el Panel Admin
 flat_products = []
 for cat in catalogo:
     for subcat in cat["subcategorias"]:
@@ -528,7 +538,6 @@ for cat in catalogo:
         for item in subcat["items"]:
             precio_raw = precios_definidos.get(item["id"], 50000)
             
-            # Paracaídas salvavidas: si el precio viene vacío o con letras desde el admin, se convierte a 0.
             try:
                 precio_def = int(precio_raw)
             except (TypeError, ValueError):
@@ -536,7 +545,6 @@ for cat in catalogo:
                 
             fotos_item = asignaciones.get(item["id"], [])
             
-            # Revisar si está vendido
             is_vendido = item["id"] in vendidos_guardados and vendidos_guardados[item["id"]] == "vendido"
             
             opacity_style = "opacity: 0.6;" if is_vendido else ""
@@ -754,4 +762,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Nuevo sistema de guardado completo implementado con prevención de errores.")
+print("✅ Catálogo actualizado con el Sofá Milk.")

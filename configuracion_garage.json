@@ -524,6 +524,51 @@
         "5B092798-A589-465D-AA93-9093EA3E80B5_1_105_c.jpeg",
         "012A1494-E21F-4C7F-8B8A-7E6CC6F2AF1E_1_105_c.jpeg"
       ]
+    },
+    "sillon_milk": {
+      "titulo": "Sofá Seccional en L Tienda Milk (Fundas Lavables)",
+      "specs": "<strong>Reseña:</strong> El sofá definitivo para relajarse en familia. De la reconocida tienda de diseño Milk, este amplio seccional destaca por su máxima comodidad, profundidad y estética limpia en tono crudo. Lo mejor: todas sus fundas son 100% desmontables y lavables en lavadora, ideal para un mantenimiento fácil e impecable.<br><br><strong>Ficha Técnica:</strong> Formato: Seccional en L | Tapicería: Fundas desmontables y lavables | Origen: Tienda Milk.",
+      "precio": 680000,
+      "fotos": [
+        "WhatsApp Image 2026-08-15 at 18.34.11.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.11 (1).jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.10.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.10 (4).jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.09 (1).jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.09.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.34.10 (2).jpeg"
+      ]
+    },
+    "comedor_vidrio_madera": {
+      "titulo": "Mesa de Comedor Vidrio y Madera Amoblé (240x140 cm)",
+      "specs": "<strong>Reseña:</strong> Una mesa de comedor imponente y de diseño arquitectónico espectacular. Cuenta con una cubierta de cristal templado de gran grosor y formato extra grande (2,4 metros), ideal para 10-12 personas. Su base es una verdadera escultura que combina cristal estructural con un macizo bloque de madera noble.<br><br><strong>Ficha Técnica:</strong> Dimensiones: 240 cm de largo x 140 cm de ancho | Materiales: Cristal templado y madera maciza | Tienda Amoblé.",
+      "precio": 600000,
+      "fotos": [
+        "WhatsApp Image 2026-08-15 at 18.31.10 (1).jpeg",
+        "WhatsApp Image 2026-08-15 at 18.31.31.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.31.11.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.31.10.jpeg",
+        "WhatsApp Image 2026-08-15 at 18.31.10 (4).jpeg",
+        "WhatsApp Image 2026-08-15 at 18.31.10 (3).jpeg"
+      ]
+    },
+    "refrigerador_fdv": {
+      "titulo": "Refrigerador FDV Side by Side Black No Frost",
+      "specs": "<strong>Reseña:</strong> Un gigante para familias grandes. Este refrigerador de dos puertas (Side by Side) de la marca FDV destaca por su gran capacidad de almacenamiento y su diseño sofisticado en color negro mate. Cuenta con sistema No Frost para olvidarte de descongelar y paneles digitales independientes para cada lado.<br><br><strong>Ficha Técnica:</strong> Diseño Side by Side (Dos puertas) | Sistema No Frost | Paneles de control de temperatura independientes.",
+      "precio": 680000,
+      "fotos": [
+        "80D72623-63B1-40B4-8C89-F9505DEE8969_1_105_c.jpeg",
+        "0296DAD0-CF7C-4451-8EAE-714C2934F9BC_1_105_c.jpeg",
+        "47840D65-7D52-4304-8935-C50032FBC71D_1_105_c.jpeg"
+      ]
+    },
+    "refrigerador_samsung": {
+      "titulo": "Refrigerador Samsung Bottom Freezer Negro Glass",
+      "specs": "<strong>Reseña:</strong> Elegante refrigerador Samsung con acabado de cristal negro que le dará un toque ultra moderno a tu cocina. Su diseño Bottom Freezer (congelador abajo) es súper cómodo para acceder a los alimentos frescos sin agacharte. Cuenta con panel digital exterior y tecnología Digital Inverter que ahorra energía y hace muy poco ruido.<br><br><strong>Ficha Técnica:</strong> Tecnología Digital Inverter | Panel de control táctil exterior | Acabado Black Glass.",
+      "precio": 300000,
+      "fotos": [
+        "278792DE-5228-4CB7-81F2-E0FDDFA56C25_1_105_c.jpeg"
+      ]
     }
   },
   "estados_vendido": {
