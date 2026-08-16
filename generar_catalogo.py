@@ -6,7 +6,7 @@ import glob
 # 🔴 1. CONFIGURACIÓN DE CONTACTO Y CONEXIONES
 # =========================================================
 NUMERO_WHATSAPP = "56975593099" 
-LINK_GOOGLE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbzX10XlQ9lkI_kZaZhAFjb5VAnxvszBvMZQz0T6b7tDOsjU-tmWGTNAqXJDnc4AHYXPlg/exec"
+LINK_GOOGLE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbw4YErtXDU2VyJlH659HPeWxmmTPkE38tNsFnwhc5fRBBaL1tNiojqvB78k4YgdECztYQ/exec"
 
 # =========================================================
 # 🟢 2. LISTA DE PRECIOS Y ASIGNACIÓN DE FOTOS
@@ -89,17 +89,6 @@ asignaciones = {
   "tv_samsung_curvo": ["3EE1128D-9F3E-49FF-A9B2-60902F824971_1_105_c.jpeg", "33113E0D-A591-4E46-AC76-BF5DD65605B7_1_105_c.jpg", "EA722B7E-4B00-4626-B98E-4F5C0D418CCC_1_105_c.jpg"],
   "lavadora_samsung": ["51546376-A4A0-44C4-8D79-F2CAECA16315_1_105_c.jpg", "5140EFFD-3690-49D4-9A6B-F23E7945B1BD_1_105_c.jpeg", "DD1A470B-6523-43B8-A2D6-9691B804DCCC_1_105_c.jpeg", "3761ED9C-D842-4B78-B1D6-F2E4A5020369_1_105_c.jpg"]
 }
-
-for json_file in glob.glob("*.json"):
-    try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            datos_extra = json.load(f)
-            if isinstance(datos_extra, dict):
-                for k, v in datos_extra.items():
-                    if isinstance(v, list):
-                        asignaciones[k] = v
-    except Exception:
-        pass
 
 # =========================================================
 # 🔵 3. CATÁLOGO CON DESCIPCIONES ENRIQUECIDAS
@@ -250,15 +239,61 @@ catalogo = [
     }
 ]
 
+# =========================================================
+# 🟡 INTEGRACIÓN DEFINITIVA DE MODIFICACIONES DEL ADMIN
+# =========================================================
+mods_guardadas = {}
+vendidos_guardados = {}
+
+# Leer el nuevo JSON integral generado por el Admin
+if os.path.exists("configuracion_garage.json"):
+    try:
+        with open("configuracion_garage.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+            mods_guardadas = data.get("modificaciones", {})
+            vendidos_guardados = data.get("estados_vendido", {})
+    except Exception:
+        pass
+
+# Leer archivo antiguo por si acaso
+if os.path.exists("nuevas_fotos_asignadas.json"):
+    try:
+        with open("nuevas_fotos_asignadas.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if isinstance(data, dict) and "modificaciones" not in data:
+                for k, v in data.items():
+                    if isinstance(v, list) and k not in mods_guardadas:
+                        asignaciones[k] = v
+    except Exception:
+        pass
+
+# Aplicar mods guardadas a la base de datos de Python
+for cat in catalogo:
+    for subcat in cat["subcategorias"]:
+        for item in subcat["items"]:
+            item_id = item["id"]
+            if item_id in mods_guardadas:
+                item["titulo"] = mods_guardadas[item_id].get("titulo", item["titulo"])
+                item["specs"] = mods_guardadas[item_id].get("specs", item["specs"])
+                precios_definidos[item_id] = mods_guardadas[item_id].get("precio", precios_definidos.get(item_id, 50000))
+                asignaciones[item_id] = mods_guardadas[item_id].get("fotos", asignaciones.get(item_id, []))
+
+# Construir lista plana actualizada para el Panel Admin
 flat_products = []
 for cat in catalogo:
     for subcat in cat["subcategorias"]:
         for item in subcat["items"]:
+            precio_admin = precios_definidos.get(item["id"], 50000)
+            try:
+                precio_admin = int(precio_admin)
+            except (TypeError, ValueError):
+                precio_admin = 0
+
             flat_products.append({
                 "id": item["id"],
                 "titulo": item["titulo"],
                 "specs": item["specs"],
-                "precioInicial": precios_definidos.get(item["id"], 50000),
+                "precioInicial": precio_admin,
                 "fotos": asignaciones.get(item["id"], [])
             })
 
@@ -375,47 +410,6 @@ __PRODUCTOS_HTML__
 
     <script>
         let carrito = {};
-        
-        let mods = JSON.parse(localStorage.getItem('modificaciones_garage')) || {};
-        document.addEventListener("DOMContentLoaded", function() {
-            Object.keys(mods).forEach(id => {
-                if(document.getElementById('title-' + id)) document.getElementById('title-' + id).innerText = mods[id].titulo;
-                if(document.getElementById('specs-' + id)) document.getElementById('specs-' + id).innerHTML = mods[id].specs;
-                if(document.getElementById('badge-' + id)) document.getElementById('badge-' + id).innerText = "Precio Sugerido: $" + mods[id].precio.toLocaleString('es-CL') + " CLP";
-                
-                if(mods[id].fotos && mods[id].fotos.length > 0) {
-                    let gallery = document.querySelector('#card-' + id + ' .gallery');
-                    if(gallery) {
-                        gallery.innerHTML = "";
-                        mods[id].fotos.forEach(img => {
-                            let imgElement = document.createElement('img');
-                            imgElement.src = img;
-                            imgElement.setAttribute('loading', 'lazy');
-                            imgElement.onclick = function() { ampliarImagen(this.src); };
-                            gallery.appendChild(imgElement);
-                        });
-                    }
-                }
-            });
-            
-            let estados_venta = JSON.parse(localStorage.getItem('estados_garage_vendido')) || {};
-            Object.keys(estados_venta).forEach(id => {
-                if(estados_venta[id] === 'vendido') {
-                    let badge = document.getElementById('badge-' + id);
-                    if (badge) { badge.innerText = "⛔ VENDIDO"; badge.style.background = "#475569"; }
-                    
-                    let offerBox = document.getElementById('offer-box-' + id);
-                    if (offerBox) { 
-                        offerBox.innerHTML = "<h3 style='color:#475569; margin:0;'>Este producto ya fue vendido</h3>"; 
-                        offerBox.style.background = "#f1f5f9"; 
-                        offerBox.style.border = "2px solid #cbd5e1";
-                    }
-                    
-                    let card = document.getElementById('card-' + id);
-                    if(card) { card.style.opacity = "0.6"; }
-                }
-            });
-        });
 
         function agregarOferta(id) {
             let titulo = document.getElementById('title-' + id).innerText;
@@ -532,14 +526,39 @@ for cat in catalogo:
     for subcat in cat["subcategorias"]:
         productos_html += f'<h3 class="subcat-title">{subcat["nombre"]}</h3>\n'
         for item in subcat["items"]:
-            precio_def = precios_definidos.get(item["id"], 50000)
+            precio_raw = precios_definidos.get(item["id"], 50000)
+            
+            # Paracaídas salvavidas: si el precio viene vacío o con letras desde el admin, se convierte a 0.
+            try:
+                precio_def = int(precio_raw)
+            except (TypeError, ValueError):
+                precio_def = 0
+                
             fotos_item = asignaciones.get(item["id"], [])
             
+            # Revisar si está vendido
+            is_vendido = item["id"] in vendidos_guardados and vendidos_guardados[item["id"]] == "vendido"
+            
+            opacity_style = "opacity: 0.6;" if is_vendido else ""
+            badge_html = f'<div class="price-badge" id="badge-{item["id"]}" style="background: #475569;">⛔ VENDIDO</div>' if is_vendido else f'<div class="price-badge" id="badge-{item["id"]}">Precio Sugerido: ${precio_def:,} CLP</div>'
+            
+            offer_box_html = f'''
+                <div class="offer-box" id="offer-box-{item['id']}" style="background: #f1f5f9; border: 2px solid #cbd5e1;">
+                    <h3 style="color:#475569; margin:0;">Este producto ya fue vendido</h3>
+                </div>
+            ''' if is_vendido else f'''
+                <div class="offer-box" id="offer-box-{item['id']}">
+                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
+                    <div class="offer-input-group"><input type="number" id="input-offer-{item['id']}" placeholder="$ 0"></div>
+                    <button class="btn-add" id="btn-add-{item['id']}" onclick="agregarOferta('{item['id']}')">🛒 Guardar en Carrito</button>
+                </div>
+            '''
+
             productos_html += f'''
-            <div class="item-card" id="card-{item['id']}">
+            <div class="item-card" id="card-{item['id']}" style="{opacity_style}">
                 <div class="item-left">
                     <div class="item-title" id="title-{item['id']}">{item["titulo"]}</div>
-                    <div class="price-badge" id="badge-{item['id']}">Precio Sugerido: ${precio_def:,} CLP</div>
+                    {badge_html}
                     <div class="specs-box" id="specs-{item['id']}">{item.get("specs", "")}</div>
                     <div class="gallery">
             '''
@@ -549,11 +568,7 @@ for cat in catalogo:
             productos_html += f'''
                     </div>
                 </div>
-                <div class="offer-box" id="offer-box-{item['id']}">
-                    <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
-                    <div class="offer-input-group"><input type="number" id="input-offer-{item['id']}" placeholder="$ 0"></div>
-                    <button class="btn-add" id="btn-add-{item['id']}" onclick="agregarOferta('{item['id']}')">🛒 Guardar en Carrito</button>
-                </div>
+                {offer_box_html}
             </div>
             '''
 
@@ -602,14 +617,15 @@ html_admin_template = """<!DOCTYPE html>
         <h1 style="color:#1e3a8a; margin-top:0;">⚙️ Panel Central de Administración</h1>
         
         <div class="header-box">
-            <h3 style="margin-top:0; color:#1e3a8a;">📥 Guardar Asignación de Fotos y Cambios</h2>
-            <p style="font-size:14px; color:#334155;">Para aplicar tus nuevas fotos en la web pública de forma permanente:</p>
+            <h3 style="margin-top:0; color:#1e3a8a;">📥 Guardar Modificaciones Completas</h2>
+            <p style="font-size:14px; color:#334155;">Para aplicar tus cambios en la web pública de forma permanente:</p>
             <ol style="font-size:14px; color:#334155;">
-                <li>Usa los botones <strong>"Elegir archivos"</strong> en la tabla de abajo para extraer los nombres de las fotos de tu PC.</li>
-                <li>Haz clic en el botón morado de abajo para descargar tu configuración.</li>
-                <li>Guarda ese archivo en la misma carpeta de Python y vuelve a correr tu script.</li>
+                <li>Edita títulos, descripciones, precios, fotos o marca como "Vendido".</li>
+                <li>Haz clic en "Guardar Cambios" en cada fila que modifiques.</li>
+                <li>Haz clic en el botón morado para descargar <strong>configuracion_garage.json</strong>.</li>
+                <li>Guarda ese archivo en la carpeta de Python y vuelve a correr tu script.</li>
             </ol>
-            <button class="btn-descargar" onclick="descargarFotosJSON()">⬇️ Descargar Configuración de Fotos (JSON)</button>
+            <button class="btn-descargar" onclick="descargarConfiguracionJSON()">⬇️ Descargar Configuración Completa (JSON)</button>
         </div>
         
         <table>
@@ -630,7 +646,6 @@ html_admin_template = """<!DOCTYPE html>
     <script>
         let catalogoAdmin = __CATALOGO_JSON__;
         
-        // Cargar bases de datos locales
         let estados_venta = JSON.parse(localStorage.getItem('estados_garage_vendido')) || {};
         let mods = JSON.parse(localStorage.getItem('modificaciones_garage')) || {};
 
@@ -712,17 +727,16 @@ html_admin_template = """<!DOCTYPE html>
             }, 1500);
         }
 
-        function descargarFotosJSON() {
-            let exportData = {};
-            catalogoAdmin.forEach(item => {
-                let fotosParaExportar = mods[item.id] && mods[item.id].fotos ? mods[item.id].fotos : item.fotos;
-                exportData[item.id] = fotosParaExportar;
-            });
+        function descargarConfiguracionJSON() {
+            let exportData = {
+                modificaciones: mods,
+                estados_vendido: estados_venta
+            };
             
             let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
             let downloadAnchorNode = document.createElement('a');
             downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "nuevas_fotos_asignadas.json");
+            downloadAnchorNode.setAttribute("download", "configuracion_garage.json");
             document.body.appendChild(downloadAnchorNode);
             downloadAnchorNode.click();
             downloadAnchorNode.remove();
@@ -740,4 +754,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Dirección actualizada a Lo Barnechea y lazy loading activado.")
+print("✅ Nuevo sistema de guardado completo implementado con prevención de errores.")

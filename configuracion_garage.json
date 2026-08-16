@@ -1,0 +1,532 @@
+{
+  "modificaciones": {
+    "ski_stockli": {
+      "titulo": "Skis Stöckli Montero AX - 168 cm",
+      "specs": "<strong>Reseña:</strong> Fabricados a mano en Suiza. El Montero AX es famoso por combinar la agilidad de un esquí de slalom con la estabilidad absoluta del freeride. Su doble placa de Titanal absorbe las vibraciones a altas velocidades, haciéndolo una máquina perfecta para toda la montaña.<br><br><strong>Ficha Técnica:</strong> Longitud: 168 cm | Estructura: Titanal & Núcleo de Madera Ligera | Fijaciones incluidas.",
+      "precio": 900000,
+      "fotos": [
+        "20260802_154147.jpeg",
+        "20260802_154154.jpeg",
+        "20260802_154201.jpeg",
+        "20260802_154216.jpeg",
+        "20260802_154237.jpeg"
+      ]
+    },
+    "ski_volkl": {
+      "titulo": "Skis Völkl Mantra V.Werks Carbon - 170 cm",
+      "specs": "<strong>Reseña:</strong> Una auténtica obra de arte de la ingeniería en carbono. Extremadamente ligeros para el ascenso pero súper potentes en el descenso. Su tecnología de banda de titanio central asegura un agarre de cantos brutal en nieve dura.<br><br><strong>Ficha Técnica:</strong> Longitud: 170 cm | Construcción: Carbono 3D.RIDGE | Incluye fijaciones Marker Griffon.",
+      "precio": 280000,
+      "fotos": [
+        "20260802_154039.jpeg",
+        "20260802_154044.jpeg",
+        "20260802_154049.jpeg",
+        "20260802_154053.jpeg"
+      ]
+    },
+    "ski_kastle": {
+      "titulo": "Skis Kästle BMX 105 Freeride - 173 cm",
+      "specs": "<strong>Reseña:</strong> El rey indiscutido del freeride. La icónica ventana transparente en la espátula (Hollowtech) no es solo estética: elimina peso y reduce drásticamente el rebote del esquí, logrando una flotabilidad perfecta en nieve honda.<br><br><strong>Ficha Técnica:</strong> Longitud: 173 cm | Patín: 105 mm | Fijaciones: Marker Griffon 13.",
+      "precio": 350000,
+      "fotos": [
+        "20260802_153655.jpeg",
+        "20260802_153706.jpeg",
+        "20260802_153716.jpeg",
+        "20260802_153721.jpeg"
+      ]
+    },
+    "ski_head": {
+      "titulo": "Skis Head Total JOY SLR (Mujer)",
+      "specs": "<strong>Reseña:</strong> Diseñados específicamente para mujeres, utilizando tecnología Graphene (el material más ligero y fuerte del mundo). Son súper permisivos, fáciles de girar y evitan la fatiga en las piernas después de un día completo de esquí.<br><br><strong>Ficha Técnica:</strong> Construcción: LIBRA Graphene & Karuba Wood Core | Incluye fijaciones ajustables.",
+      "precio": 130000,
+      "fotos": [
+        "20260802_154319.jpeg",
+        "20260802_154326.jpeg",
+        "20260802_154335.jpeg",
+        "20260802_154339.jpeg"
+      ]
+    },
+    "ski_armada": {
+      "titulo": "Skis Freeride Armada ARV 96",
+      "specs": "<strong>Reseña:</strong> El esquí más icónico de freestyle/freeride. Su perfil Rocker permite saltar en el park o esquiar de espaldas, mientras que su núcleo de álamo y fresno le da la rigidez necesaria para tallar curvas a alta velocidad. Los skis incluyen fijaciones de randone y pieles para los skis.<br><br>",
+      "precio": 150000,
+      "fotos": [
+        "20260802_153858.jpeg",
+        "20260802_153904.jpeg",
+        "20260802_153941.jpeg"
+      ]
+    },
+    "antiparras_alpina": {
+      "titulo": "Antiparras Alpina Double Jack Mag Q-LITE",
+      "specs": "<strong>Reseña:</strong> Cuentan con un lente imantado magnético. Si el clima cambia de repente en la montaña, puedes quitar el lente oscuro y poner el claro en un segundo, sin sacarte los guantes.<br><br><strong>Ficha Técnica:</strong> Lente Magnético intercambiable | Filtro Q-LITE de alto contraste.",
+      "precio": 20000,
+      "fotos": [
+        "20260802_172907.jpeg"
+      ]
+    },
+    "protector_slytech": {
+      "titulo": "Protector Columna Slytech Backpro",
+      "specs": "<strong>Reseña:</strong> Seguridad nivel pro. Su espuma inteligente es blanda al moverse y respirar, pero se endurece como una roca al recibir un impacto, protegiendo tu espalda de golpes fuertes en caídas.<br><br><strong>Ficha Técnica:</strong> Talla: L | Material: Espuma inteligente 2ND SKIN HD en formato chaleco.",
+      "precio": 35000,
+      "fotos": [
+        "20260802_172149.jpeg",
+        "20260802_172155.jpeg"
+      ]
+    },
+    "tv_samsung_curvo": {
+      "titulo": "Smart TV Samsung Pantalla Curva",
+      "specs": "<strong>Reseña:</strong> Un televisor diseñado para sumergirte en la acción. Su panel curvo mejora los ángulos de visión y reduce la fatiga ocular, creando un contraste más uniforme. Ideal para disfrutar de noches de películas o videojuegos en la sala de estar con una sensación de profundidad envolvente.<br><br><strong>Ficha Técnica:</strong> Pantalla LED Curva Samsung | Múltiples puertos HDMI y USB integrados en el panel trasero.",
+      "precio": 250000,
+      "fotos": [
+        "EFE85796-7F90-4ABC-B3D6-002A363ADC70_1_105_c.jpeg",
+        "EA722B7E-4B00-4626-B98E-4F5C0D418CCC_1_105_c.jpeg",
+        "D9239A42-6F81-454B-A4A5-8658E47FA373_1_105_c.jpeg"
+      ]
+    },
+    "banca_fullfit": {
+      "titulo": "Rack + Banca Reclinable Fullfit con Barra y Discos",
+      "specs": "<strong>Reseña:</strong> El set definitivo para armar tu gimnasio en casa y entrenar todo el cuerpo. Incluye un rack ajustable, ideal para sentadillas seguras o para usarlo como soporte de press. La banca reclinable es sólida y multiposición. Viene lista para usar con su barra y discos pesados de hierro.<br><br><strong>Ficha Técnica:</strong> Incluye: Rack ajustable Fullfit, Banca reclinable, 1 Barra estándar con Pad protector Fullfit y un Set de discos pesados de hierro fundido.",
+      "precio": 150000,
+      "fotos": [
+        "4F87B6A0-2E59-4F5C-949A-ACC049CC21F1_1_105_c.jpeg",
+        "1B98C2CD-BDD1-49D7-8083-55D8B818E845_1_105_c.jpeg"
+      ]
+    },
+    "lavadora_samsung": {
+      "titulo": "Lavadora/Secadora Samsung EcoBubble 15kg/8kg",
+      "specs": "<strong>Reseña:</strong> Una maravilla de la tecnología para el hogar que te ahorra tiempo y esfuerzo. Su sistema EcoBubble penetra las telas para una limpieza profunda incluso en agua fría, cuidando tu ropa. Su motor Digital Inverter garantiza un funcionamiento súper silencioso y de gran durabilidad. Además, cuenta con la increíble función AutoDispense: solo llenas el estanque de detergente una vez y la máquina calcula sola cuánto usar en cada lavado.<br><br><strong>Ficha Técnica:</strong> Capacidad de Lavado: 15 kg | Capacidad de Secado: 8 kg | Panel digital, tecnología EcoBubble y AutoDispense.",
+      "precio": 350000,
+      "fotos": [
+        "51546376-A4A0-44C4-8D79-F2CAECA16315_1_105_c.jpeg",
+        "3761ED9C-D842-4B78-B1D6-F2E4A5020369_1_105_c.jpeg",
+        "DD1A470B-6523-43B8-A2D6-9691B804DCCC_1_105_c.jpeg",
+        "0CEEFF36-1BF3-4526-B305-0A13765DBFDC_1_105_c.jpeg",
+        "5A183C22-6713-45C8-9A94-E160B552BABF_1_105_c.jpeg",
+        "5140EFFD-3690-49D4-9A6B-F23E7945B1BD_1_105_c.jpeg"
+      ]
+    },
+    "kitesurf_best": {
+      "titulo": "Set Kitesurf Best Waroo 9m² Completo",
+      "specs": "<strong>Reseña:</strong> El Best Waroo revolucionó el kitesurf con su diseño SLE (Supported Leading Edge), ofreciendo un rango de viento gigante y un relanzamiento desde el agua facilísimo. Perfecto tanto para principiantes como para expertos en saltos altos. Se encuentra con bastante uso, la oferta incluye tabla y 2 velas con su bolso<br><br><strong>Ficha Técnica:</strong> Superficie: 9 m² | Incluye barra de control, líneas, arnés, bomba y mochila.",
+      "precio": 120000,
+      "fotos": [
+        "20260802_155639.jpeg",
+        "20260802_155654.jpeg"
+      ]
+    },
+    "botas_tecnica_azul": {
+      "titulo": "Botas Tecnica Mach1 MV 110 (Azul/Naranja)",
+      "specs": "<strong>Reseña:</strong> Reconocidas en el mercado por su sistema C.A.S. (Custom Adaptive Shape), que permite a los bootfitters adaptar la carcasa exactamente a la forma de tu pie. Transmisión de energía directa al esquí.<br><br><strong>Ficha Técnica:</strong> Flex: 110 | Tamaño: 306 mm (26.0 - 26.5 Mondo).",
+      "precio": 90000,
+      "fotos": [
+        "20260802_171545.jpeg",
+        "20260802_171552.jpeg",
+        "20260802_171601.jpeg",
+        "20260802_172837.jpeg"
+      ]
+    },
+    "botas_nordica": {
+      "titulo": "Botas de Ski Nordica Cruise 75",
+      "specs": "<strong>Reseña:</strong> Priorizan el confort absoluto y el calor. Ideales para esquiadoras principiantes o intermedias. Su diseño permite calzarlas y descalzarlas con mucha facilidad, incluso con mucho frío.<br><br><strong>Ficha Técnica:</strong> Flex: 75 | Tamaño: 295 mm (~25.0 Mondo) | Suela de alta tracción.",
+      "precio": 60000,
+      "fotos": [
+        "20260802_171714.jpeg",
+        "20260802_171720.jpeg",
+        "20260802_171727.jpeg",
+        "20260802_171731.jpeg",
+        "20260802_171739.jpeg"
+      ]
+    },
+    "botas_tecnica_amarilla": {
+      "titulo": "Botas Tecnica Ten.2 80 (Amarillo/Negro)",
+      "specs": "<strong>Reseña:</strong> Bota todoterreno muy cómoda gracias a su sistema Quick Instep, que suaviza el plástico en el empeine para que ponérselas no sea una tortura matutina.<br><br><strong>Ficha Técnica:</strong> Flex: 80 | Tamaño: 26.5 Mondo | Horma: 102 mm.",
+      "precio": 50000,
+      "fotos": [
+        "20260802_171505.jpeg",
+        "20260802_171514.jpeg",
+        "20260802_171531.jpeg",
+        "20260802_172826.jpeg"
+      ]
+    },
+    "remadora_waterrower": {
+      "titulo": "Máquina de Remo WaterRower",
+      "specs": "<strong>Reseña:</strong> La máquina de remo definitiva para el hogar. A diferencia de las ruidosas máquinas magnéticas, su resistencia natural a base de agua proporciona un movimiento suave, un sonido relajante y un desafío que se adapta exactamente a la fuerza que le aplicas, brindando una experiencia idéntica a remar en un lago real.<br><br><strong>Ficha Técnica:</strong> Resistencia natural de fluido/agua | Monitor digital de rendimiento integrado (distancia, tiempo, calorías) | Riel de deslizamiento fluido.",
+      "precio": 180000,
+      "fotos": [
+        "F6E0E6A4-05BE-44EC-90B0-525E3797262B_1_105_c.jpeg",
+        "E34BFCA6-D536-473B-9139-A4D9FA9EF0A6_1_105_c.jpeg",
+        "DFE7A021-090A-4EC8-8B01-111D4318B03A_1_105_c.jpeg"
+      ]
+    },
+    "bike_2": {
+      "titulo": "E-Bike Specialized Turbo Creo SL Comp Carbon + Kit",
+      "specs": "<strong>Reseña:</strong> Una de las mejores e-bikes de gravel/ruta del mundo. Su motor SL 1.1 es tan silencioso y la bici tan ligera, que te olvidarás de que es eléctrica. Ofrece una autonomía tremenda y suaviza los baches con su suspensión en el manubrio Future Shock 2.0. <br><br><strong>Ficha Técnica:</strong> Carbono FACT 11r | Motor 240W | Batería 320Wh | Transmisión Shimano GRX.<br><strong>⚡ INCLUYE KIT:</strong> Casco Specialized Negro, cargador original y guantes cortos. BICICLETA TALLA M",
+      "precio": 3100000,
+      "fotos": [
+        "83FED23D-936D-428F-AD26-E1B8A3381390_1_105_c.jpeg",
+        "20260802_154813.jpeg",
+        "20260802_154900.jpeg",
+        "20260802_154856.jpeg",
+        "20260802_154853.jpeg",
+        "20260802_154837.jpeg",
+        "20260802_154822.jpeg"
+      ]
+    },
+    "bastones_kerma": {
+      "titulo": "Bastones de Ski Kerma Vector Carbon",
+      "specs": "<strong>Reseña:</strong> Muy ligeros al balanceo gracias a su mezcla de carbono y aluminio. Reducen la fatiga de los brazos en jornadas de esquí largas.<br><br><strong>Ficha Técnica:</strong> Aleación ligera de carbono y fibra | Puntera de acero al tungsteno.",
+      "precio": 15000,
+      "fotos": [
+        "20260802_154420.jpeg",
+        "20260802_154430.jpeg"
+      ]
+    },
+    "ski_rossignol": {
+      "titulo": "Skis Rossignol Experience 80 Carbon - 166 cm",
+      "specs": "<strong>Reseña:</strong> El equilibrio perfecto para esquiadores intermedios-avanzados. Reforzado con carbono para darte respuesta inmediata sin exigir el esfuerzo físico de un esquí de competición.<br><br><strong>Ficha Técnica:</strong> Longitud: 166 cm | Patín: 80 mm | Núcleo: Paulownia Wood Core con Carbono.",
+      "precio": 220000,
+      "fotos": [
+        "20260802_153812.jpeg",
+        "20260802_153802.jpeg",
+        "20260802_153740.jpeg",
+        "20260802_153748.jpeg"
+      ]
+    },
+    "ski_dynastar": {
+      "titulo": "Skis Dynastar Speed Team Course WC - 160 cm",
+      "specs": "<strong>Reseña:</strong> Un esquí de linaje de Copa del Mundo adaptado para pista. Está pensado para quienes aman bajar rápido y hacer giros cortos y precisos en nieve dura o hielo.<br><br><strong>Ficha Técnica:</strong> Longitud: 160 cm | Estructura: Sandwich Titanal de Competición.",
+      "precio": 90000,
+      "fotos": [
+        "20260802_161726.jpeg",
+        "20260802_161730 2.jpeg",
+        "20260802_161724.jpeg",
+        "20260802_161734 2.jpeg"
+      ]
+    },
+    "botas_dalbello": {
+      "titulo": "Botas de Ski Dalbello Boss 110",
+      "specs": "<strong>Reseña:</strong> Su famoso diseño Cabrio de 3 piezas permite una flexión hacia adelante muy progresiva y suave, protegiendo tus canillas.<br><br><strong>Ficha Técnica:</strong> Flex: 110 (Avanzado) | Horma ancha: 103 mm | Hebillas microajustables.",
+      "precio": 120000,
+      "fotos": [
+        "20260802_171614.jpeg",
+        "20260802_171630.jpeg",
+        "20260802_171648.jpeg",
+        "20260802_171652.jpeg"
+      ]
+    },
+    "bike_specialized_1": {
+      "titulo": "E-Bike Specialized Turbo Creo SL Comp Carbon + Kit",
+      "specs": "<strong>Reseña:</strong> Una de las mejores e-bikes de gravel/ruta del mundo. Su motor SL 1.1 es tan silencioso y la bici tan ligera, que te olvidarás de que es eléctrica. Ofrece una autonomía tremenda y suaviza los baches con su suspensión en el manubrio Future Shock 2.0. <br><br><strong>Ficha Técnica:</strong> Carbono FACT 11r | Motor 240W | Batería 320Wh | Transmisión Shimano GRX.<br><strong>⚡ INCLUYE KIT:</strong> Casco Specialized Blanco, cargador original y guantes. BICICLETA TALLA S",
+      "precio": 3100000,
+      "fotos": [
+        "7E31AFEC-3642-4373-95F6-AF2416B6E89D_1_105_c.jpeg",
+        "15560A85-4ADC-4BCB-8C67-BD4B4C89445B_1_105_c.jpeg",
+        "20260802_155531.jpeg",
+        "20260802_155537.jpeg",
+        "20260802_155541.jpeg",
+        "20260802_155548.jpeg",
+        "20260802_155552.jpeg",
+        "20260802_155557.jpeg"
+      ]
+    },
+    "casco_diezz": {
+      "titulo": "Casco Diezz Activlux Visor Photochromic",
+      "specs": "<strong>Reseña:</strong> Olvídate de cambiar antiparras. Este casco premium francés trae una visera integrada fotocromática que se oscurece automáticamente si hay sol.<br><br><strong>Ficha Técnica:</strong> Construcción In-Mold ultraligera | Visera S1-S3 adaptable.",
+      "precio": 290000,
+      "fotos": [
+        "20260802_171819.jpeg",
+        "20260802_171827.jpeg",
+        "20260802_171810.jpeg",
+        "20260802_171805.jpeg"
+      ]
+    },
+    "bastones_gabel": {
+      "titulo": "Bastones de Ski Gabel Speed (Par)",
+      "specs": "<strong>Reseña:</strong> Bastones italianos de alta velocidad, construidos en una aleación resistente que evita que se doblen o partan con facilidad.<br><br><strong>Ficha Técnica:</strong> Tubo: Aleación de Aluminio F56 | Puntera de acero reforzado.",
+      "precio": 13990,
+      "fotos": [
+        "20260802_154420.jpeg"
+      ]
+    },
+    "cadenas_nieve_power": {
+      "titulo": "Cadenas de Nieve Power",
+      "specs": "<strong>Reseña:</strong> Indispensables para subir a la montaña o enfrentar terrenos difíciles. Cadenas de tipo 'Bar Reinforced' (barras de refuerzo) diseñadas para máxima tracción en hielo y barro profundo.<br><br><strong>Ficha Técnica:</strong> Compatibilidad principal (Stock No. 1884): 265/60/R15, 265/70/R15, 245/75/R16, 255/70/R16, 245/65/R17, 255/65/R17, 255/60/R18 y similares.",
+      "precio": 45000,
+      "fotos": [
+        "EE8080A1-AF38-4CDE-AC0A-FA0A9449102B_1_105_c.jpeg",
+        "E519B17F-DC74-41F4-9A67-01D271B7A4C9_1_105_c.jpeg"
+      ]
+    },
+    "cadenas_nieve_tacoma": {
+      "titulo": "Cadenas de Nieve 265/75/R16 (Tacoma)",
+      "specs": "<strong>Reseña:</strong> Set de cadenas de nieve/barro de alto agarre, almacenadas en estuche rígido azul. Perfectas para camionetas tipo Toyota Tacoma u otros vehículos 4x4 con la medida específica.<br><br><strong>Ficha Técnica:</strong> Medida específica soportada: 265/75/R16. Construcción en acero duradero.",
+      "precio": 45000,
+      "fotos": [
+        "192B5AAF-A963-48E7-9322-903E081BA796_1_105_c.jpeg"
+      ]
+    },
+    "tabla_wayo": {
+      "titulo": "Tabla de Surf Wayo Whilar + Accesorios",
+      "specs": "<strong>Reseña:</strong> Tabla shappeada por la reconocida marca peruana Wayo Whilar. Su diseño All-Round (todoterreno) te permite surfear desde olas pequeñas y fofas hasta paredes más paradas con gran estabilidad y velocidad de remada.<br><br><strong>Ficha Técnica:</strong> Setup de 3 Quillas desmontables | Incluye Leash de seguridad y funda acolchada.",
+      "precio": 160000,
+      "fotos": [
+        "20260802_162201.jpeg",
+        "20260802_162212.jpeg",
+        "20260802_162240.jpeg",
+        "20260802_162226.jpeg"
+      ]
+    },
+    "home_theater_yamaha": {
+      "titulo": "Sistema Home Theater Yamaha YST + Receiver",
+      "specs": "<strong>Reseña:</strong> Un cine en casa completo y potente. Este sistema incluye el robusto Subwoofer Activo Yamaha YST-SW315 con tecnología Advanced YST para bajos profundos, un potente Receiver AV, y los canales (parlante central y satélites) necesarios para lograr un sonido envolvente inmersivo de altísima calidad.<br><br><strong>Ficha Técnica:</strong> Incluye: 1 Receiver AV Yamaha, 1 Subwoofer Activo YST-SW315 (250W), 1 Parlante Central y parlantes satélite. Controles de corte de frecuencia y bajos en el subwoofer.",
+      "precio": 350000,
+      "fotos": [
+        "22B37D59-240B-4615-B2B1-13950706212A_1_105_c.jpeg",
+        "38BF7AE9-95DB-474A-879F-3F3000167FE7_1_105_c.jpeg",
+        "8AC0308D-3746-4558-9303-33E66B21FDFF_1_105_c.jpeg",
+        "F2A05186-EFBA-4B9C-9A2C-DFFDC4424E57_1_105_c.jpeg",
+        "FD5C9AD4-C482-4337-A498-526311811076_1_105_c.jpeg"
+      ]
+    },
+    "parlantes_mirage": {
+      "titulo": "Parlantes Columna Hi-Fi Mirage FRx-7 (Par)",
+      "specs": "<strong>Reseña:</strong> Altavoces audiófilos de culto. Su tecnología omnipolar dispersa el sonido en 360 grados, creando una escena de audio envolvente que te hace sentir en medio de un concierto en vivo, sin importar dónde te sientes en la sala.<br><br><strong>Ficha Técnica:</strong> Diseño Columna Bipolar/Omnipolar | Potencia: 150W RMS | Respuesta: 33Hz - 22kHz.",
+      "precio": 230000,
+      "fotos": [
+        "20260802_164143.jpeg",
+        "20260802_164136.jpeg",
+        "20260802_164114.jpeg"
+      ]
+    },
+    "tv_samsung_frame": {
+      "titulo": "Smart TV Samsung The Frame 75\" QLED 4K",
+      "specs": "<strong>Reseña:</strong> Espectacular obra de diseño. Cuando la apagas, se convierte en un cuadro de arte real (no parece una pantalla). Su panel Matte Display elimina el 100% de los reflejos de las ventanas, y su One Connect Box saca todo el cablerío de la vista.<br><br><strong>Ficha Técnica:</strong> 75 pulgadas QLED 4K | Incluye One Connect Box.",
+      "precio": 1100000,
+      "fotos": [
+        "20260802_164045.jpeg",
+        "20260802_164036.jpeg",
+        "20260802_164048.jpeg"
+      ]
+    },
+    "monitor_samsung": {
+      "titulo": "Monitor Curvo Samsung ViewFinity S65UA 34\"",
+      "specs": "<strong>Reseña:</strong> Incrementa tu productividad brutalmente. Su formato Ultra-Wide curvo equivale a tener dos monitores pegados sin bordes molestos. Cuenta con USB-C que transmite imagen y carga tu notebook al mismo tiempo con un solo cable.<br><br><strong>Ficha Técnica:</strong> Resolución Ultra-WQHD (3440 x 1440) 21:9 | Curvatura inmersiva 1000R | 100Hz.",
+      "precio": 250000,
+      "fotos": [
+        "20260802_170600.jpeg",
+        "20260802_170607.jpeg",
+        "20260802_165339.jpeg"
+      ]
+    },
+    "apple_imac": {
+      "titulo": "Apple iMac Slim All-in-One",
+      "specs": "<strong>Reseña:</strong> El clásico de Apple en su icónico diseño de aluminio extra delgado. Ideal para edición de documentos, ofimática y diseño ligero. Su pantalla ofrece colores vibrantes que no cansan la vista y mantiene tu escritorio libre de cables.<br><br><strong>Ficha Técnica:</strong> Pantalla Retina | Almacenamiento SSD rápido | Incluye Apple Magic Keyboard (Teclado) y Magic Mouse originales.",
+      "precio": 250000,
+      "fotos": [
+        "748F1D65-0DDE-4B82-AC57-FD0EB955E747_1_105_c.jpeg",
+        "BCBA540E-B8D1-45DE-9548-FBD2DD5EA252_1_105_c.jpeg",
+        "20260802_165057.jpeg",
+        "20260802_165102.jpeg",
+        "20260802_165114.jpeg"
+      ]
+    },
+    "apple_tv": {
+      "titulo": "Apple TV 4K HDR 64GB",
+      "specs": "<strong>Reseña:</strong> Transforma cualquier tele en el sistema más rápido y fluido del mercado. A diferencia de las interfaces lentas de las Smart TVs convencionales, este Apple TV abre Netflix, Disney+ y YouTube al instante en glorioso 4K.<br><br><strong>Ficha Técnica:</strong> Resolución 4K HDR10 y Dolby Vision | Chip A12 Bionic | Siri Remote.",
+      "precio": 100000,
+      "fotos": [
+        "20260802_165414.jpeg",
+        "20260802_165408.jpeg"
+      ]
+    },
+    "lente_tamron_70_200": {
+      "titulo": "Lente Tamron SP 70-200mm f/2.8 Di VC USD",
+      "specs": "<strong>Reseña:</strong> Un lente teleobjetivo profesional imprescindible para retratos, deportes y eventos. Su apertura f/2.8 constante produce un desenfoque de fondo (bokeh) cremoso, y su estabilizador VC congela la imagen en condiciones de poca luz.<br><br><strong>Ficha Técnica:</strong> Apertura f/2.8 constante | Estabilizador Óptico VC | Motor de enfoque USD.",
+      "precio": 330000,
+      "fotos": [
+        "20260802_170034.jpeg",
+        "20260802_170027.jpeg",
+        "20260802_170020.jpeg",
+        "20260802_170044.jpeg"
+      ]
+    },
+    "lente_sigma_17_50": {
+      "titulo": "Lente Sigma 17-50mm f/2.8 EX DC OS HSM",
+      "specs": "<strong>Reseña:</strong> El reemplazo perfecto y luminoso para el lente de kit de tu cámara. Ideal para viajes, paisajes y retratos. Es extremadamente nítido de esquina a esquina, incluso con la apertura máxima f/2.8.<br><br><strong>Ficha Técnica:</strong> Rango focal estándar versátil | Estabilizador OS | Motor ultrasónico HSM.",
+      "precio": 170000,
+      "fotos": [
+        "20260802_170116.jpeg",
+        "20260802_170122.jpeg",
+        "20260802_170106.jpeg",
+        "20260802_170058.jpeg"
+      ]
+    },
+    "impresora_brother": {
+      "titulo": "Impresora Láser Brother HL-L2360DW",
+      "specs": "<strong>Reseña:</strong> Famosa por ser un \"tanque de guerra\" que nunca falla. Al ser láser y no de tinta, el tóner no se seca si dejas de imprimir por meses. Además imprime por ambos lados de la hoja automáticamente y vía Wi-Fi desde el celular.<br><br><strong>Ficha Técnica:</strong> Láser Monocromática | 32 ppm | Wi-Fi y Dúplex Automático.",
+      "precio": 60000,
+      "fotos": [
+        "20260802_170215.jpeg",
+        "20260802_170211.jpeg",
+        "20260802_170221.jpeg",
+        "20260802_170228.jpeg"
+      ]
+    },
+    "maquina_humo": {
+      "titulo": "Máquina de Humo 400W",
+      "specs": "<strong>Reseña:</strong> El detalle perfecto para animar cualquier fiesta en casa, evento o sesión de fotos. Calienta rápido y en segundos llena una habitación de un denso humo escénico, realzando cualquier luz de colores o láser.<br><br><strong>Ficha Técnica:</strong> Potencia 400W | Calentamiento en 3 minutos | Disparo continuo con control.",
+      "precio": 20000,
+      "fotos": [
+        "20260802_160233.jpeg",
+        "20260802_160224.jpeg",
+        "20260802_160213.jpeg"
+      ]
+    },
+    "chaqueta_rossignol": {
+      "titulo": "Chaqueta Técnica Ski Rossignol Atelier",
+      "specs": "<strong>Reseña:</strong> Indumentaria de gama alta de la colección Atelier Course. Diseñada ergonómicamente para imitar la postura del esquiador. Su membrana de 20K te mantiene totalmente seco frente a ventiscas de nieve o lluvia intensa.<br><br><strong>Ficha Técnica:</strong> Talla: L (EU 50) | Impermeabilidad 20.000mm / Transpirabilidad 20.000g.",
+      "precio": 75000,
+      "fotos": [
+        "20260802_172009.jpeg",
+        "20260802_172016.jpeg",
+        "20260802_172004.jpeg",
+        "20260802_172043.jpeg"
+      ]
+    },
+    "parka_lippi": {
+      "titulo": "Parka Larga Capucha Piel Lippi Thermal",
+      "specs": "<strong>Reseña:</strong> Corte largo muy elegante para el invierno urbano o paseos al sur. Su relleno sintético de tecnología reciclada atrapa el calor corporal excepcionalmente bien, cortando el viento helado gracias a su gorro con piel sintética.<br><br><strong>Ficha Técnica:</strong> Talla: M (Mujer) | Aislamiento térmico reciclado Lippi.",
+      "precio": 35000,
+      "fotos": [
+        "20260802_172454.jpeg",
+        "20260802_172456.jpeg",
+        "20260802_172505.jpeg",
+        "20260802_172525.jpeg",
+        "20260802_172522.jpeg",
+        "20260802_172509.jpeg"
+      ]
+    },
+    "pantalon_trangoworld": {
+      "titulo": "Pantalón Trekking Trangoworld TRX2",
+      "specs": "<strong>Reseña:</strong> Una armadura para la montaña. Su tejido bielástico Free4Move te da total libertad de movimiento en trepadas rocosas, e incluye refuerzos de Kevlar en los tobillos para evitar cortes con crampones o piedras.<br><br><strong>Ficha Técnica:</strong> Talla: L | Línea técnica TRX2 de alta resistencia a la abrasión.",
+      "precio": 40000,
+      "fotos": [
+        "20260802_172055.jpeg",
+        "20260802_172104.jpeg",
+        "20260802_172116.jpeg",
+        "20260802_172120.jpeg"
+      ]
+    },
+    "chaqueta_footjoy": {
+      "titulo": "Chaqueta Cortaviento Golf FootJoy DryJoys",
+      "specs": "<strong>Reseña:</strong> Favorita entre golfistas profesionales. No solo corta el viento y aguanta la lluvia a la perfección gracias a sus costuras selladas, sino que su diseño súper liviano no restringe el movimiento de los brazos al hacer el swing.<br><br><strong>Ficha Técnica:</strong> Talla: M | Tecnología laminada 100% impermeable extrema.",
+      "precio": 37500,
+      "fotos": [
+        "20260802_172704.jpeg",
+        "20260802_172706.jpeg",
+        "20260802_172723.jpeg",
+        "20260802_172727.jpeg",
+        "20260802_172753.jpeg"
+      ]
+    },
+    "polera_footjoy": {
+      "titulo": "",
+      "specs": "",
+      "precio": null,
+      "fotos": []
+    },
+    "pantalon_naturehike": {
+      "titulo": "Pantalón Térmico Pluma Naturehike 800FP",
+      "specs": "<strong>Reseña:</strong> Salvará tus noches acampando bajo cero en la Patagonia o el desierto. Al ser de pluma de ganso de 800 cuins, calienta brutalmente pero se comprime al tamaño de una naranja pequeña en la mochila.<br><br><strong>Ficha Técnica:</strong> Talla: L | 90% Pluma de ganso blanca ultraliviana (800FP).",
+      "precio": 40000,
+      "fotos": [
+        "20260802_172919.jpeg",
+        "20260802_172923.jpeg",
+        "20260802_172934.jpeg"
+      ]
+    },
+    "poleron_tnf": {
+      "titulo": "Polerón Fleece The North Face TKA 100",
+      "specs": "<strong>Reseña:</strong> El clásico micropolar de media estación. Es esa capa de abrigo ligera que llevas a todas partes: suave al tacto, muy duradera frente a lavados y fabricada bajo estándares ecológicos reciclados.<br><br><strong>Ficha Técnica:</strong> Talla: L (Hombre) | Microfleece 100% poliéster TKA 100.",
+      "precio": 25000,
+      "fotos": [
+        "20260802_172354.jpeg",
+        "20260802_172337.jpeg"
+      ]
+    },
+    "aire_kendal": {
+      "titulo": "Aire Acondicionado Portátil Kendal 9000 BTU",
+      "specs": "<strong>Reseña:</strong> La salvación para las olas de calor. Al ser portátil, puedes moverlo del living a la pieza. No requiere instalaciones complejas en la pared y su capacidad enfría rápidamente habitaciones estándar de hasta 15-20 m².<br><br><strong>Ficha Técnica:</strong> 9.000 BTU/h | 3 en 1: Frío, Calor y Deshumidificador | Incluye manguera de ventana.",
+      "precio": 90000,
+      "fotos": [
+        "20260802_155429.jpeg",
+        "20260802_155435.jpeg"
+      ]
+    },
+    "cooler_azul_ruedas": {
+      "titulo": "Cooler Rígido Ruedas Azul/Blanco 60L",
+      "specs": "<strong>Reseña:</strong> Olvídate de cargar peso en la playa o el asado. Cuenta con un mango telescópico y ruedas grandes para moverlo fácil sobre arena dura o tierra. Su capacidad es gigante, caben varias botellas paradas y hielo de sobra.<br><br><strong>Ficha Técnica:</strong> Capacidad ~60 Litros (~90 Latas) | Ruedas Heavy Duty integradas.",
+      "precio": 35000,
+      "fotos": [
+        "20260802_160712.jpeg",
+        "20260802_160727.jpeg",
+        "20260802_160706.jpeg"
+      ]
+    },
+    "cooler_coleman_rojo": {
+      "titulo": "Cooler Coleman Performance 48QT Rojo",
+      "specs": "<strong>Reseña:</strong> El icónico cooler de camping americano. Su tecnología ThermOZONE mantiene el hielo hasta 3 días a temperaturas de verano (hasta 32°C). Tiene un tapón inferior a prueba de fugas para vaciar el agua al final del día.<br><br><strong>Ficha Técnica:</strong> Capacidad 45.4 Litros (48 Quarts) | Asas bidireccionales pivotantes.",
+      "precio": 25000,
+      "fotos": [
+        "20260802_160429.jpeg"
+      ]
+    },
+    "cooler_klack_azul": {
+      "titulo": "Cooler Klack Neveta Portátil Azul 32L",
+      "specs": "<strong>Reseña:</strong> Un cooler térmico intermedio y súper liviano. Ideal para salidas familiares de día completo a parques o excursiones gracias a su núcleo aislante de alta densidad EPS que evita la fuga térmica.<br><br><strong>Ficha Técnica:</strong> Capacidad 32 Litros | Aislamiento en poliestireno expandido de grado alimenticio.",
+      "precio": 15000,
+      "fotos": [
+        "20260802_162453.jpeg"
+      ]
+    },
+    "porton_madera": {
+      "titulo": "Portón Doble Tallado Madera Maciza",
+      "specs": "<strong>Reseña:</strong> Pieza arquitectónica única, estilo colonial o campestre. Ideal para darle un toque imponente a la entrada principal de un fundo, parcela, o para usarla como una puerta decorativa majestuosa en proyectos de interiorismo.<br><br><strong>Ficha Técnica:</strong> Madera maciza pesada (noble) | Apliques metálicos forjados a mano de época.",
+      "precio": 250000,
+      "fotos": [
+        "20260802_153230.jpeg"
+      ]
+    },
+    "rampa_moto": {
+      "titulo": "Rampa Aluminio Plegable Moto/ATV",
+      "specs": "<strong>Reseña:</strong> Carga tu moto de enduro, cuatrimoto o cortacésped a tu camioneta en segundos, tú solo y sin esfuerzo. Como es de aluminio no se oxida, es sorprendentemente liviana para cargar, y se dobla por la mitad para guardarla fácil.<br><br><strong>Ficha Técnica:</strong> Aluminio 6061 ultra liviano (~7.2 kg) | Soporta hasta 340 kg de carga segura.",
+      "precio": 42500,
+      "fotos": [
+        "20260802_154618.jpeg",
+        "20260802_154624.jpeg",
+        "20260802_154628.jpeg"
+      ]
+    },
+    "espejo_textil": {
+      "titulo": "Espejo Artesanal Marco Textil Ovalado",
+      "specs": "<strong>Reseña:</strong> Detalles que le dan alma a los espacios. Este espejo presenta un marco con tapicería artesanal estilo patchwork indio/boho, perfecto para sumar textura y colores cálidos a una entrada, dormitorio o sala de estar.<br><br><strong>Ficha Técnica:</strong> Formato ovalado de pared | Marco ancho de tapizado artesanal con bordados a mano.",
+      "precio": 25000,
+      "fotos": [
+        "20260802_154504.jpeg",
+        "20260802_154513.jpeg"
+      ]
+    },
+    "pack_fox_enduro": {
+      "titulo": "Pack Enduro/Descenso FOX (Casco Integral + Rodilleras)",
+      "specs": "<strong>Reseña:</strong> La protección definitiva para los amantes de los descensos y el enduro. El casco integral Fox ofrece ventilación superior y protección completa de mandíbula, mientras que las rodilleras aseguran movilidad sin sacrificar seguridad ante impactos.<br><br><strong>Ficha Técnica:</strong> Incluye: 1 Casco integral FOX (gris mate) + 1 Par de Rodilleras FOX Pro.",
+      "precio": 95000,
+      "fotos": [
+        "0B62D3B3-FEE6-4061-97F8-216BD9EF117A_1_105_c.jpeg",
+        "5B092798-A589-465D-AA93-9093EA3E80B5_1_105_c.jpeg",
+        "012A1494-E21F-4C7F-8B8A-7E6CC6F2AF1E_1_105_c.jpeg"
+      ]
+    }
+  },
+  "estados_vendido": {
+    "lavadora_samsung": "vendido"
+  }
+}
