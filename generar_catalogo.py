@@ -6,7 +6,6 @@ import glob
 # 🔴 1. CONFIGURACIÓN DE CONTACTO Y CONEXIONES
 # =========================================================
 NUMERO_WHATSAPP = "56975593099" 
-# ¡AQUÍ ESTÁ TU NUEVO ENLACE ACTUALIZADO!
 LINK_GOOGLE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbzX10XlQ9lkI_kZaZhAFjb5VAnxvszBvMZQz0T6b7tDOsjU-tmWGTNAqXJDnc4AHYXPlg/exec"
 
 # =========================================================
@@ -338,8 +337,7 @@ html_publico_template = """<!DOCTYPE html>
         <ul>
             <li><strong>¿Cómo comprar?</strong> Agrega el valor que ofreces por cada producto que te interese y haz clic en "Guardar en Carrito". Al final, envía todo tu carrito junto usando el botón verde de abajo.</li>
             <li><strong>Cierre de Ofertas:</strong> Se recibirán ofertas hasta una fecha específica (por definirse). ¡Asegura tus productos antes de que se agoten!</li>
-            <li><strong>Muestra de productos:</strong> Sábado 15 de Agosto y Domingo 16 de Agosto (Coordinar horario por interno).</li>
-            <li><strong>Retiro:</strong> Todos los productos deben ser retirados en <strong>Vitacura</strong>, entre el Lunes 17 y Miércoles 19 de Agosto. Todo se entrega probado y en su estado actual.</li>
+            <li><strong>Muestra y Retiro de productos:</strong> La entrega y muestra de los artículos se realiza en la <strong>comuna de Lo Barnechea (sector Colegio Everest)</strong>. El horario y los detalles se coordinan directamente vía WhatsApp. Todo se entrega probado y en su estado actual.</li>
             <li><strong>¿No tienes cómo llevarlo?</strong> Marca la casilla de despacho al llenar tus datos y te lo enviamos por un costo fijo de $50.000.</li>
         </ul>
     </div>
@@ -392,6 +390,7 @@ __PRODUCTOS_HTML__
                         mods[id].fotos.forEach(img => {
                             let imgElement = document.createElement('img');
                             imgElement.src = img;
+                            imgElement.setAttribute('loading', 'lazy');
                             imgElement.onclick = function() { ampliarImagen(this.src); };
                             gallery.appendChild(imgElement);
                         });
@@ -545,7 +544,7 @@ for cat in catalogo:
                     <div class="gallery">
             '''
             for img in fotos_item:
-                productos_html += f'<img src="{img}" alt="{item["titulo"]}" onclick="ampliarImagen(this.src)">\n'
+                productos_html += f'<img src="{img}" alt="{item["titulo"]}" loading="lazy" onclick="ampliarImagen(this.src)">\n'
             
             productos_html += f'''
                     </div>
@@ -741,3 +740,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
+print("✅ Dirección actualizada a Lo Barnechea y lazy loading activado.")
