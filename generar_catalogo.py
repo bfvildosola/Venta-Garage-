@@ -30,12 +30,7 @@ precios_definidos = {
     "pack_fox_enduro": 95000, "remadora_waterrower": 550000, "banca_fullfit": 150000,      
     "tv_samsung_curvo": 250000, "lavadora_samsung": 350000,
     "refrigerador_samsung": 300000, "refrigerador_fdv": 680000, "comedor_vidrio_madera": 600000,
-    "sillon_milk": 680000,
-    
-    # NUEVOS ARTÍCULOS
-    "sillon_cuero_3c": 350000,
-    "sitial_cuero": 130000,
-    "horno_oster_airfryer": 80000
+    "sillon_milk": 680000, "sillon_cuero_3c": 350000, "sitial_cuero": 130000, "horno_oster_airfryer": 80000
 }
 
 asignaciones = {
@@ -94,8 +89,6 @@ asignaciones = {
   "refrigerador_fdv": ["47840D65-7D52-4304-8935-C50032FBC71D_1_105_c.jpeg", "80D72623-63B1-40B4-8C89-F9505DEE8969_1_105_c.jpeg"],
   "comedor_vidrio_madera": ["WhatsApp Image 2026-08-15 at 18.31.10.jpg", "WhatsApp Image 2026-08-15 at 18.31.11 (1).jpg", "WhatsApp Image 2026-08-15 at 18.31.11.jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (4).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (3).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (2).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (1).jpeg"],
   "sillon_milk": ["WhatsApp Image 2026-08-15 at 18.34.11 (1).jpg", "WhatsApp Image 2026-08-15 at 18.34.11.jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (5).jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (4).jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (3).jpg", "WhatsApp Image 2026-08-15 at 18.34.10.jpeg"],
-  
-  # FOTOS NUEVAS
   "sillon_cuero_3c": ["WhatsApp Image 2026-08-07 at 11.42.56.jpeg"],
   "sitial_cuero": ["WhatsApp Image 2026-08-07 at 11.42.56 (1).jpeg"],
   "horno_oster_airfryer": ["WhatsApp Image 2026-08-04 at 18.53.35.jpeg", "WhatsApp Image 2026-08-04 at 18.53.54.jpeg"]
@@ -434,11 +427,9 @@ __PRODUCTOS_HTML__
     <script>
         let carrito = {};
 
-        // SISTEMA DE PLEGADO DE CATEGORÍAS
         document.addEventListener("DOMContentLoaded", function() {
             let contents = document.querySelectorAll('.category-content');
             let icons = document.querySelectorAll('.cat-icon');
-            // Plegar todas excepto la primera al cargar la página
             contents.forEach((content, index) => {
                 if(index !== 0) {
                     content.style.display = 'none';
@@ -459,7 +450,6 @@ __PRODUCTOS_HTML__
             }
         }
 
-        // SISTEMA DE BÚSQUEDA INTELIGENTE
         function filtrarProductos() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let catSections = document.querySelectorAll('.category-section');
@@ -492,7 +482,6 @@ __PRODUCTOS_HTML__
                 let icon = section.querySelector('.cat-icon');
                 
                 if (input.trim() !== '') {
-                    // Si se está buscando algo, se abren automáticamente las carpetas que coincidan
                     if (catHasVisibleItems) {
                         section.style.display = 'block';
                         content.style.display = 'block';
@@ -501,21 +490,19 @@ __PRODUCTOS_HTML__
                         section.style.display = 'none';
                     }
                 } else {
-                    // Si se borra la búsqueda, mostrar las categorías de nuevo
                     section.style.display = 'block';
                 }
             });
         }
 
-        // SISTEMA DEL CARRITO Y FORMULARIO
-        function agregarOferta(id) {
+        function agregarOferta(id, precioSugerido) {
             let titulo = document.getElementById('title-' + id).innerText;
             let input = document.getElementById('input-offer-' + id);
             let monto = parseInt(input.value);
 
             if (isNaN(monto) || monto <= 0) { alert("Ingresa un monto válido."); return; }
 
-            carrito[id] = { titulo: titulo, monto: monto };
+            carrito[id] = { titulo: titulo, monto: monto, precioSugerido: precioSugerido };
             
             let btn = document.getElementById('btn-add-' + id);
             btn.innerHTML = "✅ Guardado ($" + monto.toLocaleString('es-CL') + ")";
@@ -571,12 +558,19 @@ __PRODUCTOS_HTML__
             let items = Object.values(carrito);
             let total = 0;
             let detalleStr = "";
-            let msjWhatsApp = `Hola Benjamín, soy *${nombre}*.\\n\\nTe quiero hacer la siguiente oferta:\\n\\n`;
+            
+            let msjWhatsApp = `Hola Benjamín, soy *${nombre}*.\\n`;
+            if(email) {
+                msjWhatsApp += `✉️ Correo: ${email}\\n`;
+            }
+            msjWhatsApp += `\\nTe quiero hacer la siguiente oferta:\\n\\n`;
 
             items.forEach(i => {
                 let valStr = i.monto.toLocaleString('es-CL');
-                detalleStr += `- ${i.titulo} ($${valStr} CLP)\\n`;
-                msjWhatsApp += `📦 *${i.titulo}*\\n💰 Ofrezco: $${valStr} CLP\\n\\n`;
+                let sugStr = i.precioSugerido.toLocaleString('es-CL');
+                
+                detalleStr += `- ${i.titulo} (Sugerido: $${sugStr} | Oferta: $${valStr})\\n`;
+                msjWhatsApp += `📦 *${i.titulo}*\\n🏷️ Precio Original: $${sugStr} CLP\\n💰 Mi Oferta: *$${valStr} CLP*\\n\\n`;
                 total += i.monto;
             });
 
@@ -587,7 +581,7 @@ __PRODUCTOS_HTML__
             }
 
             let totalStr = total.toLocaleString('es-CL');
-            msjWhatsApp += `*TOTAL FINAL: $${totalStr} CLP*\\n\\n¿Te parece bien?`;
+            msjWhatsApp += `*TOTAL OFERTA: $${totalStr} CLP*\\n\\n¿Te parece bien?`;
             
             let urlAppScript = "[LINK_GOOGLE_APPS_SCRIPT]";
             let dataGoogle = {
@@ -604,6 +598,9 @@ __PRODUCTOS_HTML__
                 fetch(urlAppScript, {
                     method: 'POST',
                     mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
                     body: JSON.stringify(dataGoogle)
                 }).catch(e => console.log(e));
             }
@@ -658,7 +655,7 @@ for cat_idx, cat in enumerate(catalogo):
                 <div class="offer-box" id="offer-box-{item['id']}">
                     <div style="font-size:14px; font-weight:bold; color:#8c4327; margin-bottom:10px;">Tu Oferta ($ CLP):</div>
                     <div class="offer-input-group"><input type="number" id="input-offer-{item['id']}" placeholder="$ 0"></div>
-                    <button class="btn-add" id="btn-add-{item['id']}" onclick="agregarOferta('{item['id']}')">🛒 Guardar en Carrito</button>
+                    <button class="btn-add" id="btn-add-{item['id']}" onclick="agregarOferta('{item['id']}', {precio_def})">🛒 Guardar en Carrito</button>
                 </div>
             '''
 
@@ -864,4 +861,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Catálogo actualizado con el Horno Oster, Sofá y Sitial de cuero.")
+print("✅ Nombres, correos y precios originales integrados para WhatsApp y Google Sheets.")
