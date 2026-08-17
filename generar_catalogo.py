@@ -29,10 +29,13 @@ precios_definidos = {
     "cadenas_nieve_power": 45000, "cadenas_nieve_tacoma": 45000, "home_theater_yamaha": 350000,
     "pack_fox_enduro": 95000, "remadora_waterrower": 550000, "banca_fullfit": 150000,      
     "tv_samsung_curvo": 250000, "lavadora_samsung": 350000,
-    "refrigerador_samsung": 300000,
-    "refrigerador_fdv": 680000,
-    "comedor_vidrio_madera": 600000,
-    "sillon_milk": 680000
+    "refrigerador_samsung": 300000, "refrigerador_fdv": 680000, "comedor_vidrio_madera": 600000,
+    "sillon_milk": 680000,
+    
+    # NUEVOS ARTÍCULOS
+    "sillon_cuero_3c": 350000,
+    "sitial_cuero": 130000,
+    "horno_oster_airfryer": 80000
 }
 
 asignaciones = {
@@ -90,14 +93,12 @@ asignaciones = {
   "refrigerador_samsung": ["278792DE-5228-4CB7-81F2-E0FDDFA56C25_1_105_c.jpeg"],
   "refrigerador_fdv": ["47840D65-7D52-4304-8935-C50032FBC71D_1_105_c.jpeg", "80D72623-63B1-40B4-8C89-F9505DEE8969_1_105_c.jpeg"],
   "comedor_vidrio_madera": ["WhatsApp Image 2026-08-15 at 18.31.10.jpg", "WhatsApp Image 2026-08-15 at 18.31.11 (1).jpg", "WhatsApp Image 2026-08-15 at 18.31.11.jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (4).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (3).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (2).jpg", "WhatsApp Image 2026-08-15 at 18.31.10 (1).jpeg"],
-  "sillon_milk": [
-      "WhatsApp Image 2026-08-15 at 18.34.11 (1).jpg",
-      "WhatsApp Image 2026-08-15 at 18.34.11.jpg",
-      "WhatsApp Image 2026-08-15 at 18.34.10 (5).jpg",
-      "WhatsApp Image 2026-08-15 at 18.34.10 (4).jpg",
-      "WhatsApp Image 2026-08-15 at 18.34.10 (3).jpg",
-      "WhatsApp Image 2026-08-15 at 18.34.10.jpeg"
-  ]
+  "sillon_milk": ["WhatsApp Image 2026-08-15 at 18.34.11 (1).jpg", "WhatsApp Image 2026-08-15 at 18.34.11.jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (5).jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (4).jpg", "WhatsApp Image 2026-08-15 at 18.34.10 (3).jpg", "WhatsApp Image 2026-08-15 at 18.34.10.jpeg"],
+  
+  # FOTOS NUEVAS
+  "sillon_cuero_3c": ["WhatsApp Image 2026-08-07 at 11.42.56.jpeg"],
+  "sitial_cuero": ["WhatsApp Image 2026-08-07 at 11.42.56 (1).jpeg"],
+  "horno_oster_airfryer": ["WhatsApp Image 2026-08-04 at 18.53.35.jpeg", "WhatsApp Image 2026-08-04 at 18.53.54.jpeg"]
 }
 
 # =========================================================
@@ -236,12 +237,15 @@ catalogo = [
                 "items": [
                     {"id": "lavadora_samsung", "titulo": "Lavadora/Secadora Samsung EcoBubble 15kg/8kg", "specs": "<strong>Reseña:</strong> Una maravilla de la tecnología para el hogar que te ahorra tiempo y esfuerzo. Su sistema EcoBubble penetra las telas para una limpieza profunda incluso en agua fría, cuidando tu ropa. Su motor Digital Inverter garantiza un funcionamiento súper silencioso y de gran durabilidad. Además, cuenta con la increíble función AutoDispense: solo llenas el estanque de detergente una vez y la máquina calcula sola cuánto usar en cada lavado.<br><br><strong>Ficha Técnica:</strong> Capacidad de Lavado: 15 kg | Capacidad de Secado: 8 kg | Panel digital, tecnología EcoBubble y AutoDispense."},
                     {"id": "refrigerador_samsung", "titulo": "Refrigerador Samsung Bottom Freezer Negro Glass", "specs": "<strong>Reseña:</strong> Elegante refrigerador Samsung con acabado de cristal negro que le dará un toque ultra moderno a tu cocina. Su diseño Bottom Freezer (congelador abajo) es súper cómodo para acceder a los alimentos frescos sin agacharte. Cuenta con panel digital exterior y tecnología Digital Inverter que ahorra energía y hace muy poco ruido.<br><br><strong>Ficha Técnica:</strong> Tecnología Digital Inverter | Panel de control táctil exterior | Acabado Black Glass."},
-                    {"id": "refrigerador_fdv", "titulo": "Refrigerador FDV Side by Side Black No Frost", "specs": "<strong>Reseña:</strong> Un gigante para familias grandes. Este refrigerador de dos puertas (Side by Side) de la marca FDV destaca por su gran capacidad de almacenamiento y su diseño sofisticado en color negro mate. Cuenta con sistema No Frost para olvidarte de descongelar y paneles digitales independientes para cada lado.<br><br><strong>Ficha Técnica:</strong> Diseño Side by Side (Dos puertas) | Sistema No Frost | Paneles de control de temperatura independientes."}
+                    {"id": "refrigerador_fdv", "titulo": "Refrigerador FDV Side by Side Black No Frost", "specs": "<strong>Reseña:</strong> Un gigante para familias grandes. Este refrigerador de dos puertas (Side by Side) de la marca FDV destaca por su gran capacidad de almacenamiento y su diseño sofisticado en color negro mate. Cuenta con sistema No Frost para olvidarte de descongelar y paneles digitales independientes para cada lado.<br><br><strong>Ficha Técnica:</strong> Diseño Side by Side (Dos puertas) | Sistema No Frost | Paneles de control de temperatura independientes."},
+                    {"id": "horno_oster_airfryer", "titulo": "Horno Eléctrico Oster con Freidora de Aire", "specs": "<strong>Reseña:</strong> Práctico y versátil horno eléctrico Oster que incluye función de freidora de aire (Air Fryer). Perfecto para cocinar tus comidas favoritas de forma más saludable, rápida y crujiente sin usar aceite. Cuenta con perillas de control de tiempo, temperatura y funciones múltiples.<br><br><strong>Ficha Técnica:</strong> Marca: Oster | Funciones: Hornear, Asar, Freír con Aire, Turbo Convección."}
                 ]
             },
             {
                 "nombre": "5.2. Muebles y Exteriores",
                 "items": [
+                    {"id": "sillon_cuero_3c", "titulo": "Sofá de Cuero 3 Cuerpos Capitoné", "specs": "<strong>Reseña:</strong> Elegante y robusto sofá de cuero de tres cuerpos con diseño capitoné en el respaldo y asiento. Ideal para darle un toque clásico y sofisticado a tu living o sala de estar. Su estructura sólida y tapiz de alta durabilidad aseguran años de comodidad.<br><br><strong>Ficha Técnica:</strong> Capacidad: 3 cuerpos | Material: Tapiz de cuero | Diseño: Capitoné."},
+                    {"id": "sitial_cuero", "titulo": "Sitial / Sillón Individual de Cuero", "specs": "<strong>Reseña:</strong> Cómodo sitial de cuero individual que hace juego perfecto con el sofá principal. Su diseño de líneas rectas y asiento capitoné lo convierten en el complemento ideal para rincones de lectura o como asiento extra en el living.<br><br><strong>Ficha Técnica:</strong> Capacidad: 1 cuerpo | Material: Tapiz de cuero | Diseño: Capitoné."},
                     {"id": "sillon_milk", "titulo": "Sofá Seccional en L Tienda Milk (Fundas Lavables)", "specs": "<strong>Reseña:</strong> El sofá definitivo para relajarse en familia. De la reconocida tienda de diseño Milk, este amplio seccional destaca por su máxima comodidad, profundidad y estética limpia en tono crudo. Lo mejor: todas sus fundas son 100% desmontables y lavables en lavadora, ideal para un mantenimiento fácil e impecable.<br><br><strong>Ficha Técnica:</strong> Formato: Seccional en L | Tapicería: Fundas desmontables y lavables | Origen: Tienda Milk."},
                     {"id": "comedor_vidrio_madera", "titulo": "Mesa de Comedor Vidrio y Madera Amoblé (240x140 cm)", "specs": "<strong>Reseña:</strong> Una mesa de comedor imponente y de diseño arquitectónico espectacular. Cuenta con una cubierta de cristal templado de gran grosor y formato extra grande (2,4 metros), ideal para 10-12 personas. Su base es una verdadera escultura que combina cristal estructural con un macizo bloque de madera noble.<br><br><strong>Ficha Técnica:</strong> Dimensiones: 240 cm de largo x 140 cm de ancho | Materiales: Cristal templado y madera maciza | Estilo Amoblé."},
                     {"id": "porton_madera", "titulo": "Portón Doble Tallado Madera Maciza", "specs": "<strong>Reseña:</strong> Pieza arquitectónica única, estilo colonial o campestre. Ideal para darle un toque imponente a la entrada principal de un fundo, parcela, o para usarla como una puerta decorativa majestuosa en proyectos de interiorismo.<br><br><strong>Ficha Técnica:</strong> Madera maciza pesada (noble) | Apliques metálicos forjados a mano de época."},
@@ -860,4 +864,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Buscador Inteligente y Menús Desplegables instalados.")
+print("✅ Catálogo actualizado con el Horno Oster, Sofá y Sitial de cuero.")
