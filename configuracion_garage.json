@@ -572,6 +572,7 @@
     }
   },
   "estados_vendido": {
-    "lavadora_samsung": "vendido"
+    "lavadora_samsung": "vendido",
+    "antiparras_alpina": "vendido"
   }
 }
