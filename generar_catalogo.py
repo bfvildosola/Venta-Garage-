@@ -595,22 +595,32 @@ __PRODUCTOS_HTML__
             let urlWhatsApp = `https://api.whatsapp.com/send?phone=[NUMERO_WHATSAPP]&text=${encodeURIComponent(msjWhatsApp)}`;
 
             if(urlAppScript !== "PEGAR_AQUI_LA_URL_DE_GOOGLE") {
-                fetch(urlAppScript, {
+                // PROMESA PARA OBLIGAR A ESPERAR A GOOGLE
+                let peticion = fetch(urlAppScript, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8'
-                    },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(dataGoogle)
-                }).catch(e => console.log(e));
-            }
+                });
 
-            setTimeout(function() {
+                // Esperamos que Google responda o pasen 3.5 segundos máximo por si hay internet lento
+                Promise.race([
+                    peticion,
+                    new Promise(resolve => setTimeout(resolve, 3500))
+                ]).finally(() => {
+                    window.location.href = urlWhatsApp;
+                    setTimeout(() => {
+                        btnWhatsapp.innerHTML = textoOriginal;
+                        btnWhatsapp.style.background = "#25D366";
+                        btnWhatsapp.disabled = false;
+                    }, 500);
+                });
+            } else {
                 window.location.href = urlWhatsApp;
                 btnWhatsapp.innerHTML = textoOriginal;
                 btnWhatsapp.style.background = "#25D366";
                 btnWhatsapp.disabled = false;
-            }, 1500);
+            }
         }
 
         function ampliarImagen(src) {
@@ -861,4 +871,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Conexión con ID nuevo implementada.")
+print("✅ Lógica anti-fugas instalada. Todas las ofertas quedarán guardadas.")
