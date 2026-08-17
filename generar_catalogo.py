@@ -336,6 +336,10 @@ html_publico_template = """<!DOCTYPE html>
         .checkbox-container input { width: 20px; height: 20px; cursor: pointer; }
         .checkbox-container span { font-size: 15px; font-weight: 600; color: #2c221e; }
         
+        /* ESTILOS DEL BUSCADOR */
+        .search-box:focus { border-color: #8c4327 !important; box-shadow: 0 0 8px rgba(140, 67, 39, 0.2); }
+        .hidden-by-search { display: none !important; }
+        
         .cat-title { background: linear-gradient(135deg, #8c4327 0%, #a65333 100%); color: #ffffff; padding: 12px 18px; margin: 30px auto 15px auto; max-width: 900px; border-radius: 12px; font-size: 18px; }
         .subcat-title { color: #a65333; max-width: 900px; margin: 20px auto 10px auto; border-bottom: 2px solid #ecdcd3; padding-bottom: 6px; font-size: 16px; }
         
@@ -403,6 +407,10 @@ html_publico_template = """<!DOCTYPE html>
             </div>
         </div>
     </div>
+    
+    <div style="max-width: 900px; margin: 30px auto 10px auto; text-align: center;">
+        <input type="text" id="searchInput" class="search-box" onkeyup="filtrarProductos()" placeholder="🔍 Buscar por producto, marca o categoría..." style="width: 90%; max-width: 600px; padding: 14px 20px; font-size: 16px; border: 2px solid #e6b8a2; border-radius: 30px; outline: none; transition: 0.3s; color:#2c221e;">
+    </div>
 
 __PRODUCTOS_HTML__
 
@@ -422,6 +430,80 @@ __PRODUCTOS_HTML__
     <script>
         let carrito = {};
 
+        // SISTEMA DE PLEGADO DE CATEGORÍAS
+        document.addEventListener("DOMContentLoaded", function() {
+            let contents = document.querySelectorAll('.category-content');
+            let icons = document.querySelectorAll('.cat-icon');
+            // Plegar todas excepto la primera al cargar la página
+            contents.forEach((content, index) => {
+                if(index !== 0) {
+                    content.style.display = 'none';
+                    icons[index].innerText = '▶';
+                }
+            });
+        });
+
+        function toggleCategoria(idx) {
+            let content = document.getElementById('cat-content-' + idx);
+            let icon = document.getElementById('cat-icon-' + idx);
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                icon.innerText = '▼';
+            } else {
+                content.style.display = 'none';
+                icon.innerText = '▶';
+            }
+        }
+
+        // SISTEMA DE BÚSQUEDA INTELIGENTE
+        function filtrarProductos() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let catSections = document.querySelectorAll('.category-section');
+            
+            catSections.forEach((section) => {
+                let items = section.querySelectorAll('.item-card');
+                let catHasVisibleItems = false;
+                
+                items.forEach(card => {
+                    let text = card.innerText.toLowerCase();
+                    if (text.includes(input)) {
+                        card.classList.remove('hidden-by-search');
+                        catHasVisibleItems = true;
+                    } else {
+                        card.classList.add('hidden-by-search');
+                    }
+                });
+                
+                let subcats = section.querySelectorAll('.subcat-section');
+                subcats.forEach(sub => {
+                    let visibleItems = sub.querySelectorAll('.item-card:not(.hidden-by-search)');
+                    if (visibleItems.length > 0) {
+                        sub.style.display = 'block';
+                    } else {
+                        sub.style.display = 'none';
+                    }
+                });
+
+                let content = section.querySelector('.category-content');
+                let icon = section.querySelector('.cat-icon');
+                
+                if (input.trim() !== '') {
+                    // Si se está buscando algo, se abren automáticamente las carpetas que coincidan
+                    if (catHasVisibleItems) {
+                        section.style.display = 'block';
+                        content.style.display = 'block';
+                        icon.innerText = '▼';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                } else {
+                    // Si se borra la búsqueda, mostrar las categorías de nuevo
+                    section.style.display = 'block';
+                }
+            });
+        }
+
+        // SISTEMA DEL CARRITO Y FORMULARIO
         function agregarOferta(id) {
             let titulo = document.getElementById('title-' + id).innerText;
             let input = document.getElementById('input-offer-' + id);
@@ -476,7 +558,6 @@ __PRODUCTOS_HTML__
                 return;
             }
 
-            // Cambiamos el botón a estado "cargando"
             let btnWhatsapp = document.querySelector('.btn-whatsapp');
             let textoOriginal = btnWhatsapp.innerHTML;
             btnWhatsapp.innerHTML = "⏳ Registrando oferta...";
@@ -523,10 +604,8 @@ __PRODUCTOS_HTML__
                 }).catch(e => console.log(e));
             }
 
-            // Damos 1.5 segundos a la señal para que viaje a Google antes de abrir WhatsApp
             setTimeout(function() {
                 window.location.href = urlWhatsApp;
-                // Restauramos el botón por si el usuario vuelve atrás en el navegador
                 btnWhatsapp.innerHTML = textoOriginal;
                 btnWhatsapp.style.background = "#25D366";
                 btnWhatsapp.disabled = false;
@@ -544,9 +623,13 @@ __PRODUCTOS_HTML__
 """
 
 productos_html = ""
-for cat in catalogo:
-    productos_html += f'<h2 class="cat-title">{cat["categoria"]}</h2>\n'
+for cat_idx, cat in enumerate(catalogo):
+    productos_html += f'<div class="category-section" id="cat-section-{cat_idx}">\n'
+    productos_html += f'<h2 class="cat-title" onclick="toggleCategoria({cat_idx})" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>{cat["categoria"]}</span> <span class="cat-icon" id="cat-icon-{cat_idx}">▼</span></h2>\n'
+    productos_html += f'<div class="category-content" id="cat-content-{cat_idx}">\n'
+    
     for subcat in cat["subcategorias"]:
+        productos_html += f'<div class="subcat-section">\n'
         productos_html += f'<h3 class="subcat-title">{subcat["nombre"]}</h3>\n'
         for item in subcat["items"]:
             precio_raw = precios_definidos.get(item["id"], 50000)
@@ -592,6 +675,8 @@ for cat in catalogo:
                 {offer_box_html}
             </div>
             '''
+        productos_html += f'</div>\n' # Cierre de subcat-section
+    productos_html += f'</div>\n</div>\n' # Cierre de category-content y category-section
 
 html_publico = html_publico_template.replace("__PRODUCTOS_HTML__", productos_html)
 html_publico = html_publico.replace("[NUMERO_WHATSAPP]", NUMERO_WHATSAPP)
@@ -775,4 +860,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Conexión con Google Sheets asegurada y Sofá Milk agregado.")
+print("✅ Buscador Inteligente y Menús Desplegables instalados.")

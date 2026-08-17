@@ -24,6 +24,10 @@
         .checkbox-container input { width: 20px; height: 20px; cursor: pointer; }
         .checkbox-container span { font-size: 15px; font-weight: 600; color: #2c221e; }
         
+        /* ESTILOS DEL BUSCADOR */
+        .search-box:focus { border-color: #8c4327 !important; box-shadow: 0 0 8px rgba(140, 67, 39, 0.2); }
+        .hidden-by-search { display: none !important; }
+        
         .cat-title { background: linear-gradient(135deg, #8c4327 0%, #a65333 100%); color: #ffffff; padding: 12px 18px; margin: 30px auto 15px auto; max-width: 900px; border-radius: 12px; font-size: 18px; }
         .subcat-title { color: #a65333; max-width: 900px; margin: 20px auto 10px auto; border-bottom: 2px solid #ecdcd3; padding-bottom: 6px; font-size: 16px; }
         
@@ -91,8 +95,15 @@
             </div>
         </div>
     </div>
+    
+    <div style="max-width: 900px; margin: 30px auto 10px auto; text-align: center;">
+        <input type="text" id="searchInput" class="search-box" onkeyup="filtrarProductos()" placeholder="🔍 Buscar por producto, marca o categoría..." style="width: 90%; max-width: 600px; padding: 14px 20px; font-size: 16px; border: 2px solid #e6b8a2; border-radius: 30px; outline: none; transition: 0.3s; color:#2c221e;">
+    </div>
 
-<h2 class="cat-title">1. Deportes de Nieve (Esquí & Snowboard)</h2>
+<div class="category-section" id="cat-section-0">
+<h2 class="cat-title" onclick="toggleCategoria(0)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>1. Deportes de Nieve (Esquí & Snowboard)</span> <span class="cat-icon" id="cat-icon-0">▼</span></h2>
+<div class="category-content" id="cat-content-0">
+<div class="subcat-section">
 <h3 class="subcat-title">1.1. Skis Premium (Alta Gama)</h3>
 
             <div class="item-card" id="card-ski_stockli" style="">
@@ -161,7 +172,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">1.2. Skis All-Mountain & Pista</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">1.2. Skis All-Mountain & Pista</h3>
 
             <div class="item-card" id="card-ski_rossignol" style="">
                 <div class="item-left">
@@ -249,7 +262,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">1.3. Botas, Cascos y Accesorios</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">1.3. Botas, Cascos y Accesorios</h3>
 
             <div class="item-card" id="card-botas_dalbello" style="">
                 <div class="item-left">
@@ -459,7 +474,13 @@
                 </div>
             
             </div>
-            <h2 class="cat-title">2. Vehículos, Ciclismo & Outdoor</h2>
+            </div>
+</div>
+</div>
+<div class="category-section" id="cat-section-1">
+<h2 class="cat-title" onclick="toggleCategoria(1)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>2. Vehículos, Ciclismo & Outdoor</span> <span class="cat-icon" id="cat-icon-1">▼</span></h2>
+<div class="category-content" id="cat-content-1">
+<div class="subcat-section">
 <h3 class="subcat-title">2.1. Cadenas de Nieve para Vehículos</h3>
 
             <div class="item-card" id="card-cadenas_nieve_power" style="">
@@ -500,7 +521,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">2.2. Bicicletas y Accesorios</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">2.2. Bicicletas y Accesorios</h3>
 
             <div class="item-card" id="card-bike_specialized_1" style="">
                 <div class="item-left">
@@ -573,7 +596,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">2.3. Deportes de Agua</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">2.3. Deportes de Agua</h3>
 
             <div class="item-card" id="card-kitesurf_best" style="">
                 <div class="item-left">
@@ -616,7 +641,13 @@
                 </div>
             
             </div>
-            <h2 class="cat-title">3. Tecnología, Audio & Fotografía</h2>
+            </div>
+</div>
+</div>
+<div class="category-section" id="cat-section-2">
+<h2 class="cat-title" onclick="toggleCategoria(2)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>3. Tecnología, Audio & Fotografía</span> <span class="cat-icon" id="cat-icon-2">▼</span></h2>
+<div class="category-content" id="cat-content-2">
+<div class="subcat-section">
 <h3 class="subcat-title">3.1. Equipos de Audio</h3>
 
             <div class="item-card" id="card-home_theater_yamaha" style="">
@@ -662,7 +693,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">3.2. Electrónica General</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">3.2. Electrónica General</h3>
 
             <div class="item-card" id="card-tv_samsung_frame" style="">
                 <div class="item-left">
@@ -856,7 +889,13 @@
                 </div>
             
             </div>
-            <h2 class="cat-title">4. Entrenamiento, Camping & Indumentaria</h2>
+            </div>
+</div>
+</div>
+<div class="category-section" id="cat-section-3">
+<h2 class="cat-title" onclick="toggleCategoria(3)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>4. Entrenamiento, Camping & Indumentaria</span> <span class="cat-icon" id="cat-icon-3">▼</span></h2>
+<div class="category-content" id="cat-content-3">
+<div class="subcat-section">
 <h3 class="subcat-title">4.1. Entrenamiento en Casa</h3>
 
             <div class="item-card" id="card-banca_fullfit" style="">
@@ -899,7 +938,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">4.2. Ropa Outdoor</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">4.2. Ropa Outdoor</h3>
 
             <div class="item-card" id="card-chaqueta_rossignol" style="">
                 <div class="item-left">
@@ -1050,7 +1091,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">4.3. Camping y Climatización</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">4.3. Camping y Climatización</h3>
 
             <div class="item-card" id="card-aire_kendal" style="">
                 <div class="item-left">
@@ -1150,7 +1193,13 @@
                 </div>
             
             </div>
-            <h2 class="cat-title">5. Muebles, Decoración & Artículos del Hogar</h2>
+            </div>
+</div>
+</div>
+<div class="category-section" id="cat-section-4">
+<h2 class="cat-title" onclick="toggleCategoria(4)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;"><span>5. Muebles, Decoración & Artículos del Hogar</span> <span class="cat-icon" id="cat-icon-4">▼</span></h2>
+<div class="category-content" id="cat-content-4">
+<div class="subcat-section">
 <h3 class="subcat-title">5.1. Electrodomésticos</h3>
 
             <div class="item-card" id="card-lavadora_samsung" style="opacity: 0.6;">
@@ -1214,7 +1263,9 @@
                 </div>
             
             </div>
-            <h3 class="subcat-title">5.2. Muebles y Exteriores</h3>
+            </div>
+<div class="subcat-section">
+<h3 class="subcat-title">5.2. Muebles y Exteriores</h3>
 
             <div class="item-card" id="card-sillon_milk" style="">
                 <div class="item-left">
@@ -1324,7 +1375,10 @@
                 </div>
             
             </div>
-            
+            </div>
+</div>
+</div>
+
 
     <div id="cart-bar" class="cart-bar">
         <div class="cart-text">🛒 <span id="cart-count">0</span> ofertas acumuladas (Total: $<span id="cart-total">0</span> CLP) <span id="cart-envio-text" style="color:#e11d48; font-size:13px; display:none;">(Incluye Despacho)</span></div>
@@ -1342,6 +1396,80 @@
     <script>
         let carrito = {};
 
+        // SISTEMA DE PLEGADO DE CATEGORÍAS
+        document.addEventListener("DOMContentLoaded", function() {
+            let contents = document.querySelectorAll('.category-content');
+            let icons = document.querySelectorAll('.cat-icon');
+            // Plegar todas excepto la primera al cargar la página
+            contents.forEach((content, index) => {
+                if(index !== 0) {
+                    content.style.display = 'none';
+                    icons[index].innerText = '▶';
+                }
+            });
+        });
+
+        function toggleCategoria(idx) {
+            let content = document.getElementById('cat-content-' + idx);
+            let icon = document.getElementById('cat-icon-' + idx);
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                icon.innerText = '▼';
+            } else {
+                content.style.display = 'none';
+                icon.innerText = '▶';
+            }
+        }
+
+        // SISTEMA DE BÚSQUEDA INTELIGENTE
+        function filtrarProductos() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let catSections = document.querySelectorAll('.category-section');
+            
+            catSections.forEach((section) => {
+                let items = section.querySelectorAll('.item-card');
+                let catHasVisibleItems = false;
+                
+                items.forEach(card => {
+                    let text = card.innerText.toLowerCase();
+                    if (text.includes(input)) {
+                        card.classList.remove('hidden-by-search');
+                        catHasVisibleItems = true;
+                    } else {
+                        card.classList.add('hidden-by-search');
+                    }
+                });
+                
+                let subcats = section.querySelectorAll('.subcat-section');
+                subcats.forEach(sub => {
+                    let visibleItems = sub.querySelectorAll('.item-card:not(.hidden-by-search)');
+                    if (visibleItems.length > 0) {
+                        sub.style.display = 'block';
+                    } else {
+                        sub.style.display = 'none';
+                    }
+                });
+
+                let content = section.querySelector('.category-content');
+                let icon = section.querySelector('.cat-icon');
+                
+                if (input.trim() !== '') {
+                    // Si se está buscando algo, se abren automáticamente las carpetas que coincidan
+                    if (catHasVisibleItems) {
+                        section.style.display = 'block';
+                        content.style.display = 'block';
+                        icon.innerText = '▼';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                } else {
+                    // Si se borra la búsqueda, mostrar las categorías de nuevo
+                    section.style.display = 'block';
+                }
+            });
+        }
+
+        // SISTEMA DEL CARRITO Y FORMULARIO
         function agregarOferta(id) {
             let titulo = document.getElementById('title-' + id).innerText;
             let input = document.getElementById('input-offer-' + id);
@@ -1396,7 +1524,6 @@
                 return;
             }
 
-            // Cambiamos el botón a estado "cargando"
             let btnWhatsapp = document.querySelector('.btn-whatsapp');
             let textoOriginal = btnWhatsapp.innerHTML;
             btnWhatsapp.innerHTML = "⏳ Registrando oferta...";
@@ -1443,10 +1570,8 @@
                 }).catch(e => console.log(e));
             }
 
-            // Damos 1.5 segundos a la señal para que viaje a Google antes de abrir WhatsApp
             setTimeout(function() {
                 window.location.href = urlWhatsApp;
-                // Restauramos el botón por si el usuario vuelve atrás en el navegador
                 btnWhatsapp.innerHTML = textoOriginal;
                 btnWhatsapp.style.background = "#25D366";
                 btnWhatsapp.disabled = false;
