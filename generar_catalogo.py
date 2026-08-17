@@ -6,7 +6,7 @@ import glob
 # 🔴 1. CONFIGURACIÓN DE CONTACTO Y CONEXIONES
 # =========================================================
 NUMERO_WHATSAPP = "56975593099" 
-LINK_GOOGLE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbw4YErtXDU2VyJlH659HPeWxmmTPkE38tNsFnwhc5fRBBaL1tNiojqvB78k4YgdECztYQ/exec"
+LINK_GOOGLE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbzAREg0UuaeLZKKMjT1VuhtGs-dBOKa434nFuUVt-SRyQjqOPuS14ouREs8YQ9l5D1-6g/exec"
 
 # =========================================================
 # 🟢 2. LISTA DE PRECIOS Y ASIGNACIÓN DE FOTOS
@@ -861,4 +861,4 @@ with open("Panel_Administrador_Ofertas.html", "w", encoding="utf-8") as f:
     f.write(html_admin)
 
 print("¡Archivos generados exitosamente!")
-print("✅ Nombres, correos y precios originales integrados para WhatsApp y Google Sheets.")
+print("✅ Conexión con ID nuevo implementada.")
