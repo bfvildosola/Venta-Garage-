@@ -573,6 +573,8 @@
   },
   "estados_vendido": {
     "lavadora_samsung": "vendido",
-    "antiparras_alpina": "vendido"
+    "antiparras_alpina": "vendido",
+    "comedor_vidrio_madera": "vendido",
+    "espejo_textil": "vendido"
   }
 }
