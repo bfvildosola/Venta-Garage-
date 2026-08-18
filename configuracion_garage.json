@@ -320,7 +320,7 @@
     "apple_imac": {
       "titulo": "Apple iMac Slim All-in-One",
       "specs": "<strong>Reseña:</strong> El clásico de Apple en su icónico diseño de aluminio extra delgado. Ideal para edición de documentos, ofimática y diseño ligero. Su pantalla ofrece colores vibrantes que no cansan la vista y mantiene tu escritorio libre de cables.<br><br><strong>Ficha Técnica:</strong> Pantalla Retina | Almacenamiento SSD rápido | Incluye Apple Magic Keyboard (Teclado) y Magic Mouse originales.",
-      "precio": 250000,
+      "precio": 120000,
       "fotos": [
         "748F1D65-0DDE-4B82-AC57-FD0EB955E747_1_105_c.jpeg",
         "BCBA540E-B8D1-45DE-9548-FBD2DD5EA252_1_105_c.jpeg",
@@ -576,6 +576,8 @@
     "lavadora_samsung": "vendido",
     "antiparras_alpina": "vendido",
     "comedor_vidrio_madera": "vendido",
-    "espejo_textil": "vendido"
+    "espejo_textil": "vendido",
+    "sitial_cuero": "vendido",
+    "sillon_cuero_3c": "vendido"
   }
 }
